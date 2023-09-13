@@ -83,7 +83,7 @@ const Form = ({
                       <div className='mb-3 position-relative' key={index}>
                         <label className='form-label mt-2'>{label}</label>
                         <input
-                          type={togglePassword[name] ? "text" : type}
+                          type={type}
                           name={name}
                           className={`form-control position-relative  ${
                             focusedInput === index ? "focused" : ""
@@ -98,11 +98,8 @@ const Form = ({
                         
                         <span
                           className='password-toggle__icon shadow-sm '
-                          onClick={() => handletogglePassword(name)}
                         >
-                          {togglePassword[name] === true
-                            ? showPassIcon
-                            : hidePassIcon}
+                         {hidePassIcon}
                         </span>
                       </div>
                     );

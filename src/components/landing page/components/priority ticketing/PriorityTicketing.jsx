@@ -41,11 +41,11 @@ const PriorityTicketing = () => {
                 return (
                   <div className='row  ps-lg-5  ' key={index}>
                     <div className='col-2 d-md-none d-xxl-block '>
-                      <div className='priority-ticket-icon__wrapper'>
-                        <i className='  rounded-circle '>{currElm.icon}</i>
+                      <div className='priority-ticket-icon__wrapper '>
+                        <i className='  rounded-circle ps-0 '>{currElm.icon}</i>
                       </div>
                     </div>
-                    <div className='col-10 ps-3 mt-3 d-md-none d-xxl-block'>
+                    <div className='col-10 ps-xxl-3 mt-3 d-md-none d-xxl-block'>
                       <h4 className='constant__heading priority-ticket-heading fs-5'>
                         {currElm.title}
                       </h4>

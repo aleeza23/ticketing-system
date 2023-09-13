@@ -20,13 +20,7 @@ export const useFormHandler = (FORMS_SATATE, navigatePath) => {
   };
 
 
-   //  handle password toggle
-   const handletogglePassword = (name) => {
-    settogglePassword((prev) => ({
-      ...prev,
-      [name]: !prev[name],
-    }));
-  };
+ 
   
 
   // handle submit
@@ -53,7 +47,6 @@ export const useFormHandler = (FORMS_SATATE, navigatePath) => {
 
   return {
     handleChange,
-    handletogglePassword,
     togglePassword,
     handleSubmit,
     inputsData,
