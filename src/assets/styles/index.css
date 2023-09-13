@@ -33,13 +33,14 @@
 }
 /* constant btn css */
 .constant-btn {
-  border-radius: 20px;  
+  border-radius: 20px; 
+  box-shadow: none !important; 
 }
 .constant-btn:hover {
   opacity: 0.8;
   cursor: pointer;
 }
-.constant-btn:focus {
+.constant-btn:active {
   transform: scale(0.97) !important;
   box-shadow: none !important;
   outline: none !important;

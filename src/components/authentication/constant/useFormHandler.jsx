@@ -25,6 +25,7 @@ export const useFormHandler = (FORMS_SATATE, navigatePath) => {
       ...prev,
       [name]: !prev[name],
     }));
+    console.log(togglePassword);
   };
 
   //handle validation
@@ -34,7 +35,7 @@ export const useFormHandler = (FORMS_SATATE, navigatePath) => {
     if (inputsData["email"] === "") {
       errors.email = "Email is required*";
     } else{
-      const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+      const emailRegex =  /^[A-Za-z0-9+_.-]+@(.+)$/;
       if (!emailRegex.test(inputsData["email"])) {
         errors.email = "Invalid email*";
       }
@@ -44,7 +45,7 @@ export const useFormHandler = (FORMS_SATATE, navigatePath) => {
     if (inputsData["password"] === "") {
       errors.password = "Password is required*";
     } else if (inputsData["password"].length < 8) {
-      errors.password = "Password should be 8 character longer*";
+      errors.password = "Password must be 8 character long*";
     }
 
     if (inputsData["confirmPassword"] === "") {
