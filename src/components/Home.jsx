@@ -1,96 +1,21 @@
 // landing page -> unAuthorize
-
-import { Button, Descriptions, Modal, Badge } from "antd";
-import React, { useState } from "react";
-
-const items = [
-  {
-    key: "1",
-    label: "Product",
-    children: "Cloud Database",
-  },
-  {
-    key: "2",
-    label: "Billing Mode",
-    children: "Prepaid",
-  },
-  {
-    key: "3",
-    label: "Automatic Renewal",
-    children: "YES",
-  },
-  {
-    key: "4",
-    label: "Order time",
-    children: "2018-04-24 18:00:00",
-  },
-  {
-    key: "5",
-    label: "Usage Time",
-    children: "2019-04-24 18:00:00",
-    span: 2,
-  },
-  {
-    key: "6",
-    label: "Status",
-    children: <Badge status="processing" text="Running" />,
-    span: 3,
-  },
-  {
-    key: "7",
-    label: "Negotiated Amount",
-    children: "$80.00",
-  },
-  {
-    key: "8",
-    label: "Discount",
-    children: "$20.00",
-  },
-  {
-    key: "9",
-    label: "Official Receipts",
-    children: "$60.00",
-  },
-  {
-    key: "10",
-    label: "Config Info",
-    children: (
-      <>
-        Data disk type: MongoDB
-        <br />
-        Database version: 3.4
-        <br />
-        Package: dds.mongo.mid
-        <br />
-        Storage space: 10 GB
-        <br />
-        Replication factor: 3
-        <br />
-        Region: East China 1
-        <br />
-      </>
-    ),
-  },
-];
+import Hero from "./landing page/components/hero section/Hero";
+import "../assets/styles/home.css";
+import Intro from "./landing page/components/system intro/Intro";
+import PriorityTicketing from "./landing page/components/priority ticketing/PriorityTicketing";
+import TicketManagment from "./landing page/components/ticket managment/TicketManagment";
+import DiscoverAgents from "./landing page/components/discover agents/DiscoverAgents";
+import Footer from "./landing page/components/footer/Footer";
 
 const Home = () => {
-  const [open, setOpen] = useState(false);
-
   return (
     <>
-      <Button type="primary" onClick={() => setOpen(true)}>
-        Open Modal of 1000px width
-      </Button>
-      <Modal
-        title="Modal 1000px width"
-        centered
-        open={open}
-        onOk={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
-        width={1000}
-      >
-        <Descriptions title="User Info" bordered items={items} />
-      </Modal>
+      <Hero />
+      <Intro />
+      <PriorityTicketing />
+      <DiscoverAgents />
+      <TicketManagment />
+      <Footer />
     </>
   );
 };
