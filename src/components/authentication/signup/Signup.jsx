@@ -3,30 +3,7 @@ import Form from "../constant/Form";
 import {useFormHandler} from "../constant/useFormHandler";
 import {AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
 
-const SIGNUP_DATA = [
-  {
-    label: "Email",
-    type: "email",
-    name: "email",
-    placeholder: "Enter your email...",
-  },
-  {
-    label: "Password",
-    type: "password",
-    name: "password",
-    placeholder: "Enter your password...",
-    hidePassIcon: <AiFillEyeInvisible />,
-    showPassIcon: <AiFillEye />,
-  },
-  {
-    label: "Confirm Password",
-    name: "confirmPassword",
-    type: "password",
-    placeholder: "Enter your password...",
-    hidePassIcon: <AiFillEyeInvisible />,
-    showPassIcon: <AiFillEye />,
-  },
-];
+
 
 const Signup = () => {
   const [signUpData, setsignUpData] = useState(SIGNUP_DATA);
@@ -56,3 +33,28 @@ const Signup = () => {
 };
 
 export default Signup;
+
+const SIGNUP_DATA = [
+  {
+    label: "Email",
+    type: "text",
+    name: "email",
+    placeholder: "Enter your email...",
+  },
+  {
+    label: "Password",
+    type: "password",
+    name: "password",
+    placeholder: "Enter your password...",
+    hidePassIcon: <AiFillEyeInvisible />,
+    showPassIcon: <AiFillEye />,
+  },
+  {
+    label: "Confirm Password",
+    name: "confirmPassword",
+    type: "password",
+    placeholder: "Enter your password...",
+    hidePassIcon: <AiFillEyeInvisible />,
+    showPassIcon: <AiFillEye />,
+  },
+];

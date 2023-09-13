@@ -52,7 +52,7 @@
   position: absolute;
   color: var(--light-black);
   right: 10px;
-  top: 53%;
+ top: 40px;
   cursor: pointer;
   font-size: 1.4rem !important;
 }

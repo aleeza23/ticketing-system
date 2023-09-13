@@ -83,7 +83,7 @@ const Form = ({
                       <div className='mb-3 position-relative' key={index}>
                         <label className='form-label mt-2'>{label}</label>
                         <input
-                          type={type}
+                          type={togglePassword[name] ? "text" : type}
                           name={name}
                           className={`form-control position-relative  ${
                             focusedInput === index ? "focused" : ""
@@ -92,15 +92,18 @@ const Form = ({
                           onFocus={() => handleFocus(index)}
                           autoComplete='off'
                           onChange={handleChange}
-                          value={values[name]}
-                          required                          
+                          value={values[name]} 
                         />
-                        
                         <span
-                          className='password-toggle__icon shadow-sm '
+                          className='password-toggle__icon'
+                          onClick={() => handletogglePassword(name)}
                         >
-                         {hidePassIcon}
+                          {togglePassword[name] === true
+                            ? showPassIcon
+                            : hidePassIcon}
                         </span>
+                        <p className="text-danger ms-2">{error[name]}</p>
+
                       </div>
                     );
                   })}

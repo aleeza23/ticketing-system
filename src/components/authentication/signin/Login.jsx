@@ -38,7 +38,7 @@ export default Login;
 const LOGIN_DATA = [
   {
     label: "Username or email",
-    type: "email",
+    type: "text",
     name: "email",
     placeholder: "Enter your email...",
   },
