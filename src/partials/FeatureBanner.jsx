@@ -9,7 +9,7 @@ const FeatureBanner = ({titleSpan ,title , text , className}) => {
   return (
     <>
       <div className='row py-4'>
-        <div className='col-12 col-lg-8 offset-lg-2'>
+        <div className='col-12 col-lg-8 mx-auto'>
           <h1 className={headingClasses}>
             {title} <span>{titleSpan}</span>
           </h1>

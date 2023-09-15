@@ -20,7 +20,7 @@ const TicketManagment = () => {
             return (
               <div className='col-12 col-lg-4 g-3 col-md-6' key={index}>
                 <div className='ticket-managment__card-wrapper shadow mx-1 h-100  '>
-                  <i style={{fontSize: "5rem", color: "#0074E4"}}>
+                  <i style={{fontSize: "5rem", color: "#BF00FF"}}>
                     {currElm.icon}
                   </i>
                   <h4 className='constant__heading mt-5 '>{currElm.title}</h4>

@@ -115,7 +115,7 @@ const Form = ({
                     {forgotPassPage}
                   </Link>
 
-                  <Button onSubmit={handleSubmit} className='form-control fw-bold mt-5 py-2 bg-primary text-white '>
+                  <Button onSubmit={handleSubmit} className='form-control fw-bold mt-5 py-2 contant-form-btn text-white '>
                     {submitting === true ? (
                       <FiLoader className='form-submitting' />
                     ) : (

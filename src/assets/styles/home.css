@@ -4,7 +4,7 @@ body {
 /* hero section css  */
 .hero-section {
   padding: 0.7rem 0;
-  background-color:  var(--primary-color); 
+  background: var(--primary-color); 
   position: relative;
 }
 .wave{
@@ -57,7 +57,7 @@ body {
 
 .intro-card__wrapper::after{
   content: '';
-  background-color: var(--primary-color);
+  background-color: var(--primary-color-purple);
   height: 20%;
   width: 20%;
   border-radius: 50%;
@@ -65,14 +65,20 @@ body {
   position: absolute;
   top: -15%;
   left:-8%;
+  opacity: 0;
+  transition: opacity 0.3s ease-in; 
+  
 }
 
+.intro-card__wrapper:hover::after {
+  opacity: 1; 
+}
 /* priority teckitng section */
 /* BA68C8 */
 
 .priority-ticket-icon__wrapper i {
   font-size: 3rem !important;
-  color: var(--primary-color);  
+  color: var(--primary-color-purple);  
 }
 
 .priority-ticket-heading{
@@ -124,9 +130,11 @@ body {
   color: #0f0d0c !important;
 
 }
-
+.section-bg{
+  background-color: var(--section-bg);
+}
 .ticket-managment__card-wrapper:hover {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color-purple);
   transition: 0.5s ease-in-out;
 }
 
