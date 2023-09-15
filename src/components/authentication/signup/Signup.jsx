@@ -10,7 +10,7 @@ const Signup = () => {
   const {handleChange, handleSubmit, submitting, inputsData ,error} = useFormHandler({
     email: "",
     password: "",
-    confirmPassword: "",
+    userName: "",
   });
 
   return (
@@ -36,6 +36,12 @@ export default Signup;
 
 const SIGNUP_DATA = [
   {
+    label: "Username",
+    name: "userName",
+    type: "text",
+    placeholder: "Enter your name...",   
+  },
+  {
     label: "Email",
     type: "text",
     name: "email",
@@ -49,12 +55,5 @@ const SIGNUP_DATA = [
     hidePassIcon: <AiFillEyeInvisible />,
     showPassIcon: <AiFillEye />,
   },
-  {
-    label: "Confirm Password",
-    name: "confirmPassword",
-    type: "password",
-    placeholder: "Enter your password...",
-    hidePassIcon: <AiFillEyeInvisible />,
-    showPassIcon: <AiFillEye />,
-  },
+  
 ];

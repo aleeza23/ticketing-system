@@ -31,7 +31,9 @@ export const useFormHandler = (FORMS_SATATE, navigatePath) => {
   //handle validation
   const handleValidation = () => {
     let errors = {};
-
+    if (inputsData["userName"] === "") {
+      errors.userName = "Name is required*";
+    }
     if (inputsData["email"] === "") {
       errors.email = "Email is required*";
     } else{
