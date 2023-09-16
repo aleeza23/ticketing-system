@@ -68,7 +68,7 @@ export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
   
 
   // handle form submit
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     const isValid = handleValidation();
