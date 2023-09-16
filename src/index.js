@@ -12,7 +12,7 @@ import { Toaster } from "react-hot-toast";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Toaster position="top-right" />
+    <Toaster position="top-center" />
     <App />
   </BrowserRouter>
 );
