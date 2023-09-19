@@ -1,33 +1,31 @@
-import React, {useContext} from "react";
+import React, {useContext, useEffect} from "react";
 import {AuthContext} from "../../context/authContext";
-import AdminDashboard from "../../system roles/admin/components/admin dashboard/AdminDashboard";
-import AgentDashboard from "../../system roles/agent/components/agent dashboard/AgentDashboard";
-import ManagerDashboard from "../../system roles/manager/components/ManagerDashboard";
-import ClientDashboard from "../../system roles/client/components/client dashboard/ClientDashboard";
-
+import {useNavigate} from "react-router-dom";
 
 const RoleBasedRouting = () => {
-    const {auth} = useContext(AuthContext);
-    console.log(auth.user.role);
+  const {auth} = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    //conditions to check the role of user
-    if (!auth && !auth.user) {
-      return <h1>erorrrrrrrr</h1>
+  useEffect(() => {
+    if (auth.user) {
+      if (auth.user?.role === "admin") {
+        navigate("/admin-dashboard");
+      }
+      if (auth.user?.role === "agent") {
+        navigate("/agent-dashboard");
+      }
+      if (auth.user?.role === "client") {
+        navigate("/client-dashboard");
+      }
+      if (auth.user?.role === "manager") {
+        navigate("/manager-dashboard");
+      }
+    }else{
+      navigate('/')
     }
-    if (auth.user.role === "admin") {
-      return <AdminDashboard /> 
-    }
-    if (auth.user.role === "agent") {
-      return <AgentDashboard />
-    } 
-     if (auth.user.role === "manager") {
-      return <ManagerDashboard />;
-    } 
-     if (auth.user.role === "client") {
-     return <ClientDashboard />;
-    }
-  
-    return <></>
+  }, [auth, navigate]);
+
+  return null;
 };
 
 export default RoleBasedRouting;

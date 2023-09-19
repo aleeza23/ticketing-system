@@ -22,7 +22,7 @@ const App = () => {
         <Route path='/manager-dashboard' element={<ManagerDashboard />} />
         <Route path='/agent-dashboard' element={<AgentDashboard />} />
         <Route path='/client-dashboard' element={<ClientDashboard />} />
-        <Route path='/dashboard' element={<RoleBasedRouting />}></Route> 
+        <Route path='/dashboard' element={<RoleBasedRouting />} />
 
       </Routes>
     </>
