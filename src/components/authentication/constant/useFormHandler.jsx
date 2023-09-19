@@ -1,14 +1,17 @@
 import axios from "axios";
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
+import {AuthContext} from "../../../context/authContext";
 
-export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {  
+export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
   const [inputsData, setinputsData] = useState(FORMS_SATATE);
   const [submitting, setsubmitting] = useState(false);
   const [error, setError] = useState({});
   const [togglePassword, settogglePassword] = useState({});
+  const { auth, setAuth} = useContext(AuthContext);
   const navigate = useNavigate();
+
 
   //handle input change
   const handleChange = (e) => {
@@ -65,7 +68,6 @@ export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
     setError({...errors});
     return Object.keys(errors).length <= 1;
   };
-  
 
   // handle form submit
   const handleSubmit = (e) => {
@@ -82,12 +84,16 @@ export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
         axios
           .post(apiUrl, inputsData)
           .then((response) => {
-            console.log(response.data);
+            console.log(response);
             if (response.data.error) {
               toast.error(response.data.error);
+
             } else {
+              setAuth({user: response.data.user, token: response.data.token});
               localStorage.setItem("loginData", JSON.stringify(response.data));
               toast.success("User login successfully");
+               //conditions
+              navigate('/dashboard')
             }
           })
           .catch((error) => {
@@ -96,7 +102,6 @@ export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
 
         setsubmitting(false);
         setinputsData(FORMS_SATATE);
-        navigate(navigatePath);
       }, 5000);
     }
   };

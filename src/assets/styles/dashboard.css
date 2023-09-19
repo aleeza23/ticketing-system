@@ -1,0 +1,29 @@
+.dashboard-container {
+  height: var(--height);
+  /* width: 100vw; */
+}
+.dashboard-container__header {
+  background-color: var(--black);
+}
+.header__content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dashboard-container__sider {
+  background: var(--primary-color) !important;
+}
+.sider__toggle-btn {
+  cursor: pointer;
+}
+ul li {
+  color: var(--white);
+  font-size: .9rem;
+}
+ul li:hover {
+  color: var(--primary-color-purple);
+  background-color: var(--white);
+}
+/* ul li:active{
+    background-color: var(--white);
+} */

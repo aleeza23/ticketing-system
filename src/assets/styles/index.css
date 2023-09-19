@@ -35,6 +35,31 @@
 .row{
   margin: 0 auto;
 }
+
+
+/* contsnt text */
+.navbar-brand {
+  font-family: var(--heading-font);
+}
+.constant__heading {
+  font-family: var(--heading-font-family );
+  /* color: #f5f5f5 !important; */
+  color:#000000;
+}
+
+.constant__heading.constant-white{
+  color: var(--text-color-white) ;
+}
+.constant__text {
+  font-family: var(--text-font-family);
+  font-weight: 500;
+  
+}
+.constant__text-justify{
+  text-align: justify;
+}
+
+
 /* constant btn css */
 .constant-btn {
   border-radius: 20px; 

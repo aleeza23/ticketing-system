@@ -6,9 +6,14 @@ import PriorityTicketing from "./landing page/components/priority ticketing/Prio
 import TicketManagment from "./landing page/components/ticket managment/TicketManagment";
 import DiscoverAgents from "./landing page/components/discover agents/DiscoverAgents";
 import Footer from "./landing page/components/footer/Footer";
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
 
 const Home = () => {
+  const {auth} = useContext(AuthContext)
+  console.log(auth);
   return (
+    
     <>
       <Hero />
       <Intro />
@@ -16,6 +21,8 @@ const Home = () => {
       <DiscoverAgents />
       <TicketManagment />
       <Footer />
+    
+
     </>
   );
 };
