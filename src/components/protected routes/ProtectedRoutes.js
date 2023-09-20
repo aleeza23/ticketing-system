@@ -37,7 +37,7 @@ const ProtectedRoutes = ({children, CURRENT_USER_API, CURRENT_USER_ROLE}) => {
   }, [auth && auth.token]);
 
   if (loading) {
-    return  <FiLoader className='form-submitting loadig-spinner' />;
+    return  <FiLoader className='form-submitting loading-spinner' />;
   }
 
 

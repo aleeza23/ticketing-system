@@ -88,7 +88,7 @@
     transform: rotate(360deg);
   }
 }
-.loadig-spinner{
+.loading-spinner{
   font-size: 3rem !important;
   color: var(--primary-color-purple) !important;
   position: absolute;
