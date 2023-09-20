@@ -74,3 +74,25 @@
   box-shadow: none !important;
   outline: none !important;
 }
+/* //spinner */
+.form-submitting {
+  color: var(--white);
+  font-size: 1.7rem !important;
+  animation: rotate 2s linear infinite;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loadig-spinner{
+  font-size: 3rem !important;
+  color: var(--primary-color-purple) !important;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% , -50%);
+}

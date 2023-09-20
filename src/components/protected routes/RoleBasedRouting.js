@@ -25,7 +25,7 @@ const RoleBasedRouting = () => {
     }
   }, [auth, navigate]);
 
-  return null;
+  
 };
 
 export default RoleBasedRouting;
