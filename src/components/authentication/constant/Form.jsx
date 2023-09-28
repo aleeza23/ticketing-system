@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import {useState} from "react";
 import {FiLoader} from "react-icons/fi";
 import {useFormHandler} from "./useFormHandler";
+import FormInputs from "./FormInputs";
 
 const Form = ({
   formsData,
@@ -20,17 +21,8 @@ const Form = ({
   handleSubmit,
   submitting,
   error,
-  
 }) => {
-
-  const [focusedInput, setFocusedInput] = useState(null);
-  const {handletogglePassword, togglePassword,  } = useFormHandler();
-  
-
-  // handle input focus
-  const handleFocus = (index) => {
-    setFocusedInput(index);
-  };
+ 
 
   return (
     <>
@@ -68,61 +60,19 @@ const Form = ({
                   </Link>
                 </p>
 
-                <form onSubmit={handleSubmit}>
-                  {formsData.map((currElm, index) => {
-                    const {
-                      label,
-                      placeholder,
-                      type,
-                      name,
-                      showPassIcon,
-                      hidePassIcon,
-                    } = currElm;
-
-                    return (
-                      <div className='mb-3 position-relative' key={index}>
-                        <label className='form-label mt-2'>{label}</label>
-                        <input
-                          type={togglePassword[name] ? "text" : type}
-                          name={name}
-                          className={`form-control position-relative  ${
-                            focusedInput === index ? "focused" : ""
-                          }`}
-                          placeholder={placeholder}
-                          onFocus={() => handleFocus(index)}
-                          autoComplete='off'
-                          onChange={handleChange}
-                          value={values[name]} 
-                        />
-                        <span
-                          className='password-toggle__icon'
-                          onClick={() => handletogglePassword(name)}
-                        >
-                          {togglePassword[name] === true
-                            ? showPassIcon
-                            : hidePassIcon}
-                        </span>
-                        <p className="text-danger ms-2">{error[name]}</p>
-
-                      </div>
-                    );
-                  })}
-
-                  <Link
-                    to={forgotPassPath}
-                    className='float-end text-decoration-none my-2'
-                  >
-                    {forgotPassPage}
-                  </Link>
-
-                  <Button onSubmit={handleSubmit} className='form-control fw-bold mt-5 py-2 contant-form-btn text-white '>
-                    {submitting === true ? (
-                      <FiLoader className='form-submitting' />
-                    ) : (
-                      btnTitle
-                    )}
-                  </Button>
-                </form>
+                {/* form inputs component */}
+                <FormInputs
+                  formsData={formsData}                 
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                  values={values}
+                  submitting={submitting}
+                  error={error}
+                  btnTitle={btnTitle}
+                  forgotPassPage={forgotPassPage}
+                  forgotPassPath={forgotPassPath}
+                />
+                
               </div>
             </div>
           </div>

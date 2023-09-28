@@ -13,7 +13,7 @@ const TopNav = () => {
         <div className='container'>
           <span className='navbar-brand mb-0 text-white fs-4 h1'>QuickResolve</span>
           {/* <button clasName='bg-white text-dark constant-btn ' onClick={navigate('/log-in')} >Sign in</button> */}
-          <Button className='bg-white border-0 px-4 py-2 fw-bold' onClick={() => navigate('/log-in')}>
+          <Button className='bg-white border-0 px-4 py-2 fw-bold rounded-pill' onClick={() => navigate('/log-in')}>
             Log in
           </Button>
         </div>

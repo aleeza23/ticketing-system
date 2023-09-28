@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import Dashboard from "../../../../partials/Dashboard";
+import Dashboard from "../../constant/dashboard/Dashboard";
 import {Card} from "antd";
-import ProtectedRoutes from "../../../../components/protected routes/ProtectedRoutes";
-import { AuthContext } from "../../../../context/authContext";
+import ProtectedRoutes from "../../../components/protected routes/ProtectedRoutes";
+import { AuthContext } from "../../../context/authContext";
 
 const AgentDashboard = () => {
   const API = 'http://localhost:9000/api/current-agent'

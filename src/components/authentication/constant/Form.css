@@ -52,16 +52,13 @@
   position: absolute;
   color: var(--light-black);
   right: 10px;
- top: 40px;
+  top: 40px !important;
   cursor: pointer;
   font-size: 1.4rem !important;
 }
-.contant-form-btn{
+.contant-form-btn {
   background: var(--primary-color);
 }
-
-
-
 
 /* //media query */
 @media (max-width: 530px) {

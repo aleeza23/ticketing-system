@@ -1,6 +1,6 @@
 import {Layout} from "antd";
 import React, {useState} from "react";
-import "../assets/styles/dashboard.css";
+import "../../../assets/styles/dashboard.css";
 import DashboardSider from "./DashboardSider";
 import DashboardHeader from "./DashboardHeader";
 import DashboardContent from "./DashboardContent";

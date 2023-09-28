@@ -6,12 +6,12 @@ import {AuthContext} from "../../../context/authContext";
 
 export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
   const [inputsData, setinputsData] = useState(FORMS_SATATE);
+  const [focusedInput, setFocusedInput] = useState(null);
   const [submitting, setsubmitting] = useState(false);
   const [error, setError] = useState({});
   const [togglePassword, settogglePassword] = useState({});
-  const { auth, setAuth} = useContext(AuthContext);
+  const {auth, setAuth} = useContext(AuthContext);
   const navigate = useNavigate();
-
 
   //handle input change
   const handleChange = (e) => {
@@ -22,6 +22,12 @@ export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
         [name]: value,
       };
     });
+  };
+
+
+  // handle input focus
+  const handleFocus = (index) => {
+    setFocusedInput(index);
   };
 
   //  handle password toggle
@@ -37,10 +43,12 @@ export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
   const handleValidation = () => {
     let errors = {};
 
+    //validate usename
     if (inputsData["userName"] === "") {
       errors.userName = "Name is required*";
     }
 
+    //validate email
     if (inputsData["email"] === "") {
       errors.email = "Email is required*";
     }
@@ -52,16 +60,27 @@ export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
     //   errors.email = "Invalid email*";
     // }
 
+    //validate password
     if (inputsData["password"] === "") {
       errors.password = "Password is required*";
     } else if (inputsData["password"].length < 6) {
       errors.password = "Password must be 6 character long*";
+      errors.confirmPassword = "Password must be 6 character long*";
     }
 
+    //validate confirm password
     if (inputsData["confirmPassword"] === "") {
       errors.confirmPassword = "Confirm password is required*";
     } else if (inputsData["password"] !== inputsData["confirmPassword"]) {
       errors.confirmPassword = "Password did not match*";
+    }
+
+    //validate role and catagory
+    if (inputsData["role"] === "") {
+      errors.role = "Role is required*";
+    }
+    if (inputsData["category"] === "") {
+      errors.category = "Category is required*";
     }
 
     console.log(errors);
@@ -87,13 +106,12 @@ export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
             console.log(response);
             if (response.data.error) {
               toast.error(response.data.error);
-
             } else {
               setAuth({user: response.data.user, token: response.data.token});
               localStorage.setItem("loginData", JSON.stringify(response.data));
               toast.success("User login successfully");
-               //conditions
-              navigate('/dashboard')
+              //routing
+              navigate("/protected-routes");
             }
           })
           .catch((error) => {
@@ -114,5 +132,7 @@ export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
     inputsData,
     submitting,
     error,
+    focusedInput,
+    handleFocus
   };
 };

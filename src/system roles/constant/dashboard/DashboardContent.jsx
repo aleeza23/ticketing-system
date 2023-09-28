@@ -6,7 +6,7 @@ const DashboardContent = ({children}) => {
 
   return (
     <>
-      <Content className='p-4 '>{children}</Content>
+      <Content className='p-4 bg-light '>{children}</Content>
     </>
   );
 };

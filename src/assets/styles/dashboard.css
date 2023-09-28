@@ -5,11 +5,12 @@
 .dashboard-container__header {
   background-color: var(--black);
 }
-.header__content{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.header__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .dashboard-container__sider {
   background: var(--primary-color) !important;
 }
@@ -18,12 +19,63 @@
 }
 ul li {
   color: var(--white);
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 ul li:hover {
   color: var(--primary-color-purple);
   background-color: var(--white);
 }
+.ant-menu-item-selected {
+  background-color: var(--white) !important;
+  color: var(--primary-color-purple);
+}
 /* ul li:active{
     background-color: var(--white);
 } */
+
+/* all users css */
+.users-btn {
+  background-color: var(--light-purple-color);
+  font-weight: bold;
+  color: var(--primary-color-purple);
+  border-radius: 20px !important;
+}
+.users-btn:hover {
+  color: var(--primary-color-purple) !important;
+  /* opacity: .9 !important; */
+  outline: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+.users-btn:active {
+  color: var(--white);
+  background-color: var(--primary-color-purple);
+  box-shadow: none !important;
+}
+.user-btn-Active,
+.user-btn-Active:hover {
+  border: 2px solid var(--primary-color-purple) !important;
+  background-color: var(--primary-color-purple);
+  color: var(--white) !important;
+  box-shadow: none !important;
+}
+/* create account css */
+.create-account_form {
+  font-family: var(--text-font-family);
+}
+.create-account__btn {
+  background: var(--primary-color-purple);
+  color: var(--white);
+  border: 0;
+}
+.create-account__card {
+  background-color: var(--white) !important;
+}
+.password-toggle__create-icons {
+  top: 32px !important;
+}
+
+/* breadcrumb css */
+.breacdcrumb-active {
+  color: var(--primary-color-purple);
+}

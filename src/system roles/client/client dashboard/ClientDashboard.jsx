@@ -1,7 +1,7 @@
 import React from "react";
-import Dashboard from "../../../../partials/Dashboard";
+import Dashboard from "../../constant/dashboard/Dashboard";
 import {Card} from "antd";
-import ProtectedRoutes from "../../../../components/protected routes/ProtectedRoutes";
+import ProtectedRoutes from "../../../components/protected routes/ProtectedRoutes";
 
 const ClientDashboard = () => {
     const API = 'http://localhost:9000/api/current-client'
