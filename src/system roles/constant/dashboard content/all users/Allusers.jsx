@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import {Avatar, Card, List} from "antd";
 import AllUsersButton from "./AllUsersButton";
 import {Link, Outlet} from "react-router-dom";
-import AppModal from "../AppModal";
+import AppModal from "../../reuseable components/AppModal";
 import Button from "../../../../partials/Button";
 import useHandleUsers from "../../../Hook/custom hook/useHandleUsers";
 

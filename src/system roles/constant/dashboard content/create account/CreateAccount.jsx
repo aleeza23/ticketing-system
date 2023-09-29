@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import BreadCrumbs from "../../BreadCrumbs";
+import BreadCrumbs from "../../reuseable components/BreadCrumbs";
 import {IoCreate, IoHome,} from "react-icons/io5";
 import {useFormHandler} from "../../../../components/authentication/constant/useFormHandler";
 import {AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
 import CreateAccountForm from "./CreateAccountForm";
+import CreateAccountChart from "./CreateAccountChart";
 
 
 const CreateAccount = () => {
@@ -41,6 +42,8 @@ const CreateAccount = () => {
         togglePassword={togglePassword}
         handleFocus={handleFocus}
       />
+
+      <CreateAccountChart />
     </>
   );
 };

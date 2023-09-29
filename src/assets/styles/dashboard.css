@@ -79,3 +79,8 @@ ul li:hover {
 .breacdcrumb-active {
   color: var(--primary-color-purple);
 }
+
+/* charts css */
+.chart-container{
+  background-color: var(--white);
+}
