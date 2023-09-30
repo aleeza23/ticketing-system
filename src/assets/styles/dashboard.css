@@ -63,16 +63,21 @@ ul li:hover {
 .create-account_form {
   font-family: var(--text-font-family);
 }
-.create-account__btn {
+.create-account__btn , .create-account__btn:hover {
   background: var(--primary-color-purple);
-  color: var(--white);
+  color: var(--white) !important;
   border: 0;
+  border-radius: 0 !important;
 }
 .create-account__card {
   background-color: var(--white) !important;
 }
 .password-toggle__create-icons {
   top: 32px !important;
+}
+.create-account__loading{
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
 }
 
 /* breadcrumb css */

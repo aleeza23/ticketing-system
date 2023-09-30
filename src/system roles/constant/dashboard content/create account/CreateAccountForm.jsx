@@ -1,8 +1,8 @@
 import React from "react";
-import {useFormHandler} from "../../../../components/authentication/constant/useFormHandler";
-import {Card, Select} from "antd";
+import {Card} from "antd";
 import Button from "../../../../partials/Button";
 import "../../../../components/authentication/constant/Form.css";
+import {AiOutlineLoading3Quarters} from 'react-icons/ai'
 
 const CreateAccountForm = ({
   createAccountData,
@@ -10,10 +10,10 @@ const CreateAccountForm = ({
   handletogglePassword,
   handleFocus,
   focusedInput,
-  handleSubmit,
+  handleCreateAccount,
   values,
+  loading,
   handleChange,
-  submitting,
   error,
 }) => {
   
@@ -22,7 +22,7 @@ const CreateAccountForm = ({
   return (
     <>
       <Card title='Create Account' className='mt-4 shadow-sm create-account__card'>
-        <form className='px-lg-3' onSubmit={handleSubmit}>
+        <form className='px-lg-3' onSubmit={handleCreateAccount}>
           <div className='row create-account_form'>
             {createAccountData.map((currElm, index) => {
               const {
@@ -96,7 +96,7 @@ const CreateAccountForm = ({
             })}
           </div>
           <Button className='create-account__btn px-4 py-2 fw-bold ms-2 mt-2'>
-            {submitting ? "Creating account..." : "Create Account"}
+          {loading ? <>Processing.... <AiOutlineLoading3Quarters className="form-submitting create-account__loading ms-1"/></> : 'Create account'}
           </Button>
         </form>
       </Card>

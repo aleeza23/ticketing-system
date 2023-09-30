@@ -4,7 +4,7 @@ import LineCharts from "../../reuseable components/LineCharts";
 const CreateAccountChart = () => {
   return (
     <>
-      <div className='row mt-3 g-2'>
+      <div className='row mt-3  g-2'>
         <div className='col-12 col-lg-6'>
         <div className="chart-container p-4 w-100 rounded shadow-sm ">
         <LineCharts chartData={data} />
@@ -13,7 +13,7 @@ const CreateAccountChart = () => {
         </div>
         {/* chart 2 */}
         <div className='col-12 col-lg-6'>
-        <div className="chart-container p-4 w-100 rounded shadow-sm ">
+        <div className="chart-container  p-4 w-100 rounded shadow-sm ">
         <LineCharts chartData={data}/>
         </div>
         </div>

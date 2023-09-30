@@ -5,6 +5,7 @@ import {useFormHandler} from "../../../../components/authentication/constant/use
 import {AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
 import CreateAccountForm from "./CreateAccountForm";
 import CreateAccountChart from "./CreateAccountChart";
+import useCreateAccount from "../../../Hook/custom hook/useCreateAccount";
 
 
 const CreateAccount = () => {
@@ -15,12 +16,13 @@ const CreateAccount = () => {
     useFormHandler({
       email: "",
       password: "",
-      userName: "",
+      name: "",
       category: "",
       role: "",
     });
 
-  return (
+    const {handleCreateAccount,loading} = useCreateAccount(inputsData)
+     return (
     <>
       <BreadCrumbs
         from={"Admin Dashboard"}
@@ -33,11 +35,11 @@ const CreateAccount = () => {
       <CreateAccountForm
         createAccountData={createAccountData}
         handleChange={handleChange}
-        handleSubmit={handleSubmit}
+        handleCreateAccount={handleCreateAccount}
         error={error}
+        loading={loading}
         values={inputsData}
         focusedInput={focusedInput}
-        submitting={submitting}
         handletogglePassword={handletogglePassword}
         togglePassword={togglePassword}
         handleFocus={handleFocus}
@@ -53,7 +55,7 @@ export default CreateAccount;
 const CREATE_ACCOUNT_DATA = [
   {
     label: "Username",
-    name: "userName",
+    name: "name",
     type: "text",
     placeholder: "Enter your name...",
   },
@@ -72,8 +74,9 @@ const CREATE_ACCOUNT_DATA = [
   {
     label: "Choose Category",
     name: "category",
-    type: "select",
-    options: ["admin", "manager", "agent", " client"],
+    type: "text",
+    placeholder: "Enter category...",
+
   },
   {
     label: "Password",
