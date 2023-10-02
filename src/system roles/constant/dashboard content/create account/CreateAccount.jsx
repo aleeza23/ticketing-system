@@ -33,7 +33,7 @@ const CreateAccount = () => {
       />
 
       <CreateAccountForm
-        createAccountData={createAccountData}
+        inputsData={createAccountData}
         handleChange={handleChange}
         handleCreateAccount={handleCreateAccount}
         error={error}

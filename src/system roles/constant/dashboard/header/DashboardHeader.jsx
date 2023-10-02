@@ -4,10 +4,9 @@ import {RxHamburgerMenu} from "react-icons/rx";
 import {IoLogOutOutline} from "react-icons/io5";
 import {BsPersonFillGear} from "react-icons/bs";
 import {useState} from "react";
-import AppModal from "../reuseable components/AppModal";
-import Button from "../../../partials/Button";
-import {AuthContext} from "../../../context/authContext";
+import {AuthContext} from "../../../../context/authContext";
 import {useNavigate} from "react-router-dom";
+import UpdateProfile from "./UpdateProfile";
 
 const DashboardHeader = ({settoggleMenu, toggleMenu}) => {
   const {Header} = Layout;
@@ -60,17 +59,7 @@ const DashboardHeader = ({settoggleMenu, toggleMenu}) => {
         </div>
       </Header>
 
-      <AppModal
-        title='Edit Profile'
-        setmodal={setmodal}
-        modal={modal}
-        footer={null}
-      >
-        <input type='file' accept='images/*' className='form-control' />
-        <Button className='create-account__btn px-4 py-1 fw-bold  mt-3 ms-auto'>
-          Update
-        </Button>
-      </AppModal>
+      <UpdateProfile modal={modal} setmodal={setmodal} />
     </>
   );
 };

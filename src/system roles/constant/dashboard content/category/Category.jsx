@@ -25,7 +25,7 @@ const Category = () => {
     <Card title='Add Category' className="mt-4 ">
     <label className="constant__text mb-1">Category Name</label>
     <input type="text" className="form-control focused" name='name' placeholder="Add category name..." value={category.name} onChange={handleChange}/>
-    <Button className='create-account__btn px-4 py-2 fw-bold mt-3' onClick={handleSubmitCategory}>Submit</Button>
+    <Button className='purple__btn px-4 py-2 fw-bold mt-3' onClick={handleSubmitCategory}>Submit</Button>
 
     <List
           itemLayout='horizontal'

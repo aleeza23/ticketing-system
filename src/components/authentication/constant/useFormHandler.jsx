@@ -133,6 +133,7 @@ export const useFormHandler = (FORMS_SATATE, apiUrl, navigatePath) => {
     submitting,
     error,
     focusedInput,
-    handleFocus
+    handleFocus,
+    setinputsData
   };
 };

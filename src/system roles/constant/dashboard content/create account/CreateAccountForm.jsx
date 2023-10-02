@@ -5,7 +5,7 @@ import "../../../../components/authentication/constant/Form.css";
 import {AiOutlineLoading3Quarters} from 'react-icons/ai'
 
 const CreateAccountForm = ({
-  createAccountData,
+  inputsData,
   togglePassword,
   handletogglePassword,
   handleFocus,
@@ -24,7 +24,7 @@ const CreateAccountForm = ({
       <Card title='Create Account' className='mt-4 shadow-sm create-account__card'>
         <form className='px-lg-3' onSubmit={handleCreateAccount}>
           <div className='row create-account_form'>
-            {createAccountData.map((currElm, index) => {
+            {inputsData.map((currElm, index) => {
               const {
                 label,
                 placeholder,
@@ -95,7 +95,7 @@ const CreateAccountForm = ({
               );
             })}
           </div>
-          <Button className='create-account__btn px-4 py-2 fw-bold ms-2 mt-2'>
+          <Button className='purple__btn px-4 py-2 fw-bold ms-2 mt-2'>
           {loading ? <>Processing.... <AiOutlineLoading3Quarters className="form-submitting create-account__loading ms-1"/></> : 'Create account'}
           </Button>
         </form>
