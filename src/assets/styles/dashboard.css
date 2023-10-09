@@ -90,3 +90,13 @@ ul li:hover {
 .chart-container {
   background-color: var(--white);
 }
+/* tabel css */
+.tabel-spinner {
+  color: var(--primary-color-purple);  
+}
+.btn-danger{
+  background-color: red;  
+}
+.btn-danger:hover {
+  color: var(--white) !important;
+}

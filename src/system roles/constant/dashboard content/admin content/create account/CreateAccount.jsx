@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import BreadCrumbs from "../../reuseable components/BreadCrumbs";
+import BreadCrumbs from "../../../reuseable components/BreadCrumbs";
 import {IoCreate, IoHome,} from "react-icons/io5";
-import {useFormHandler} from "../../../../components/authentication/constant/useFormHandler";
+import {useFormHandler} from "../../../../../components/authentication/constant/useFormHandler";
 import {AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
 import CreateAccountForm from "./CreateAccountForm";
 import CreateAccountChart from "./CreateAccountChart";
-import useCreateAccount from "../../../Hook/custom hook/useCreateAccount";
+import useCreateAccount from "../../../../Hook/custom hook/useCreateAccount";
 
 
 const CreateAccount = () => {
@@ -16,6 +16,7 @@ const CreateAccount = () => {
     useFormHandler({
       email: "",
       password: "",
+      confirmPassword : "",
       name: "",
       category: "",
       role: "",
@@ -35,7 +36,7 @@ const CreateAccount = () => {
       <CreateAccountForm
         inputsData={createAccountData}
         handleChange={handleChange}
-        handleCreateAccount={handleCreateAccount}
+        handleSubmit={handleCreateAccount}
         error={error}
         loading={loading}
         values={inputsData}
@@ -43,6 +44,8 @@ const CreateAccount = () => {
         handletogglePassword={handletogglePassword}
         togglePassword={togglePassword}
         handleFocus={handleFocus}
+        title={'Create Account'}
+        buttonText={'Create Account'}
       />
 
       <CreateAccountChart />
@@ -69,13 +72,18 @@ const CREATE_ACCOUNT_DATA = [
     label: "Choose Role",
     name: "role",
     type: "select",
-    options: ["admin", "manager", "agent", " client"],
+    options: [
+      {name: "agent", _id: "agent"},
+      {name: "admin", _id: "admin"},
+      {name: "manager", _id: "manager"},
+      {name: "Client", _id: "Client"},
+    ],
   },
   {
     label: "Choose Category",
     name: "category",
-    type: "text",
-    placeholder: "Enter category...",
+    type: "select",
+    options: [],
 
   },
   {

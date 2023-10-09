@@ -1,8 +1,9 @@
 import React from "react";
 import {Card} from "antd";
-import Button from "../../../../partials/Button";
-import "../../../../components/authentication/constant/Form.css";
-import {AiOutlineLoading3Quarters} from 'react-icons/ai'
+import Button from "../../../../../partials/Button";
+import "../../../../../components/authentication/constant/Form.css";
+import {AiOutlineLoading3Quarters} from "react-icons/ai";
+import useHandleCategory from "../../../../Hook/custom hook/useHandleCategory";
 
 const CreateAccountForm = ({
   inputsData,
@@ -10,19 +11,25 @@ const CreateAccountForm = ({
   handletogglePassword,
   handleFocus,
   focusedInput,
-  handleCreateAccount,
+  handleSubmit,
   values,
   loading,
   handleChange,
   error,
+  title,
+  buttonText
 }) => {
-  
-    // const { Option } = Select;
+  const {categoriesData} = useHandleCategory();
+
+  // const { Option } = Select;
 
   return (
     <>
-      <Card title='Create Account' className='mt-4 shadow-sm create-account__card'>
-        <form className='px-lg-3' onSubmit={handleCreateAccount}>
+      <Card
+        title={title}
+        className='mt-4 shadow-sm create-account__card'
+      >
+        <form className='px-lg-3' onSubmit={handleSubmit}>
           <div className='row create-account_form'>
             {inputsData.map((currElm, index) => {
               const {
@@ -34,7 +41,7 @@ const CreateAccountForm = ({
                 hidePassIcon,
                 options,
               } = currElm;
-
+              let mapONOptions = name === "category" ? categoriesData : options;
               return (
                 <>
                   {type === "text" || type === "password" ? (
@@ -65,8 +72,9 @@ const CreateAccountForm = ({
                         </span>
                       )}
                       <p className='text-danger ms-2'>{error[name]}</p>
-                    </div>
-                  ) : (
+                      
+                    </div> ) 
+                    : (
                     <div className='col-12 col-lg-6 ' key={index}>
                       <label className='form-label '>{label}</label>
 
@@ -79,11 +87,12 @@ const CreateAccountForm = ({
                         onChange={handleChange}
                         value={values[name]}
                       >
-                        <option value="">Choose</option>
-                        {options.map((currElm, ind) => {
+                        <option value=''>Choose</option>
+                        
+                        {mapONOptions.map((currElm, ind) => {
                           return (
-                            <option value={currElm} key={ind} >
-                              {currElm}
+                            <option value={currElm._id} key={ind}>
+                              {currElm.name}
                             </option>
                           );
                         })}
@@ -96,7 +105,14 @@ const CreateAccountForm = ({
             })}
           </div>
           <Button className='purple__btn px-4 py-2 fw-bold ms-2 mt-2'>
-          {loading ? <>Processing.... <AiOutlineLoading3Quarters className="form-submitting create-account__loading ms-1"/></> : 'Create account'}
+            {loading ? (
+              <>
+                Processing....
+                <AiOutlineLoading3Quarters className='form-submitting create-account__loading ms-1' />
+              </>
+            ) : (
+              buttonText
+            )}
           </Button>
         </form>
       </Card>

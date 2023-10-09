@@ -9,6 +9,7 @@ const useCreateAccount = (data) => {
 
   const handleCreateAccount = (e) => {
     e.preventDefault();
+    
     axios
       .post("http://localhost:9000/api/register/a/user", data, {
         headers: {
@@ -18,10 +19,11 @@ const useCreateAccount = (data) => {
       .then((res) => {
         if (res.data.error) {
           toast.error(res.data.error);
+          
         } else if (res.data.ok || !res.data.error) {
           setloading(true);
           setTimeout(() => {
-            toast.success("Account Created Successfully");
+            toast.success("Account Created Successfully!");
             setloading(false);
           }, 5000);
         }

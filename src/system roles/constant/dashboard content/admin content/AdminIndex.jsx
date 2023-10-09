@@ -1,7 +1,7 @@
-import {Card} from "antd";
+import { Card } from "antd";
 import React from "react";
 
-const Dashboard = () => {
+const AdminIndex = () => {
   return (
     <>
       <Card title='Admin' bordered={false} style={{width: 300}}>
@@ -11,4 +11,5 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default AdminIndex;
+

@@ -77,6 +77,7 @@
   color: var(--white);
   font-size: 1.7rem !important;
   animation: rotate 2s linear infinite;
+  
 }
 @keyframes rotate {
   0% {

@@ -21,7 +21,6 @@ const Home = () => {
       <DiscoverAgents />
       <TicketManagment />
       <Footer />
-    
 
     </>
   );

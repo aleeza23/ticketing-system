@@ -10,14 +10,19 @@ import AgentDashboard from "./system roles/agent/agent dashboard/AgentDashboard"
 import ClientDashboard from "./system roles/client/client dashboard/ClientDashboard";
 import RoleBasedRouting from "./components/protected routes/RoleBasedRouting";
 import AdminAllUsers from "./system roles/admin/components/AdminAllUsers";
-import Dashboard from "./system roles/constant/dashboard content/Dashboard";
-import AllUsersAgent from "./system roles/constant/dashboard content/all users/AllUsersAgent";
-import AllUsersAdmin from "./system roles/constant/dashboard content/all users/AllUsersAdmin";
-import AllUsersManager from "./system roles/constant/dashboard content/all users/AllUsersManager";
-import AllUsersClient from "./system roles/constant/dashboard content/all users/AllUsersClient";
-import Allusers from "./system roles/constant/dashboard content/all users/Allusers";
-import CreateAccount from "./system roles/constant/dashboard content/create account/CreateAccount";
-import Category from "./system roles/constant/dashboard content/category/Category";
+import Dashboard from "./system roles/constant/dashboard content/admin content/AdminIndex";
+import AllUsersAgent from "./system roles/constant/dashboard content/admin content/all users/AllUsersAgent";
+import AllUsersAdmin from "./system roles/constant/dashboard content/admin content/all users/AllUsersAdmin";
+import AllUsersManager from "./system roles/constant/dashboard content/admin content/all users/AllUsersManager";
+import AllUsersClient from "./system roles/constant/dashboard content/admin content/all users/AllUsersClient";
+import CreateAccount from "./system roles/constant/dashboard content/admin content/create account/CreateAccount";
+import Category from "./system roles/constant/dashboard content/admin content/category/Category.jsx";
+import ClientIndex from "./system roles/constant/dashboard content/client content/ClientIndex";
+import SubmitTicket from "./system roles/constant/dashboard content/client content/submit ticket/SubmitTicket";
+import OpenTicket from "./system roles/constant/dashboard content/client content/open ticket/OpenTicket";
+import AdminIndex from "./system roles/constant/dashboard content/admin content/AdminIndex";
+import AgentIndex from "./system roles/constant/dashboard content/agent content/AgentIndex";
+import AllTickets from "./system roles/constant/dashboard content/agent content/all tickets/AllTickets";
 const App = () => {
   return (
     <>
@@ -29,9 +34,9 @@ const App = () => {
 
         {/* admin dashboard routing */}
         <Route path='/admin-dashboard' element={<AdminDashboard />}>
-          <Route index element={<Dashboard />} />
-          <Route path="create-account" element={<CreateAccount />} />
-          <Route path="category" element={<Category />} />
+          <Route index element={<AdminIndex />} />
+          <Route path='create-account' element={<CreateAccount />} />
+          <Route path='category' element={<Category />} />
 
           {/* all users routing */}
           <Route path='all-users' element={<AdminAllUsers />}>
@@ -39,14 +44,26 @@ const App = () => {
             <Route path='clients' element={<AllUsersClient />} />
             <Route path='admins' element={<AllUsersAdmin />} />
             <Route path='managers' element={<AllUsersManager />} />
-          </Route>        
-
+          </Route>
 
         </Route>
 
+        {/* client dashboard routing */}
+        <Route path='/client-dashboard' element={<ClientDashboard />}>
+        <Route index element={<ClientIndex />} />
+        <Route path='submit-ticket' element={<SubmitTicket />} />
+        <Route path='open-ticket' element={<OpenTicket />} />          
+        </Route>
+
+        {/* agent dashboard routing */}
+        <Route path='/agent-dashboard' element={<AgentDashboard />}>
+        <Route index element={<AgentIndex />} />
+        <Route path='all-ticket' element={<AllTickets />} />
+
+        </Route>
+
+
         <Route path='/manager-dashboard' element={<ManagerDashboard />} />
-        <Route path='/agent-dashboard' element={<AgentDashboard />} />
-        <Route path='/client-dashboard' element={<ClientDashboard />} />
         <Route path='/protected-routes' element={<RoleBasedRouting />} />
       </Routes>
     </>
