@@ -3,8 +3,9 @@ import React, {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../../context/authContext";
 import toast from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
+import {Toast} from "bootstrap";
 
-const useHandleTicket = (data) => {
+const useClientTickets = (data) => {
   const [loading, setloading] = useState(false);
   const {auth} = useContext(AuthContext);
   const [ticketsList, setticketsList] = useState([]);
@@ -57,39 +58,7 @@ const useHandleTicket = (data) => {
       });
   }, [auth && auth.token]);
 
-
-
-  //api call to get ticket list for agent
-  const handleGetTicketsList = () => {
-    setloading(true);
-    axios
-      .get("http://localhost:9000/api/by/agent/category/list", {
-        headers: {
-          Authorization: `Bearer ${auth?.token}`,
-        },
-      })
-      .then((res) => {
-        setticketsList(res.data.tickets);
-        setloading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Faild to  pick ticket");
-        setloading(false);
-      });
-  };
-
-
-  useEffect(() => {
-    handleGetTicketsList();
-
-    // Calling function inside  interval after every 2 min
-    const interval = setInterval(() => {
-      handleGetTicketsList();
-    }, 60 * 1 * 1000);
-
-    return () => clearInterval(interval);
-  }, [auth && auth?.token]);
+  
 
 
   return {
@@ -99,4 +68,4 @@ const useHandleTicket = (data) => {
   };
 };
 
-export default useHandleTicket;
+export default useClientTickets;

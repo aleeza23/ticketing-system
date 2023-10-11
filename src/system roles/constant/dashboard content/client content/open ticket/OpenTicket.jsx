@@ -2,15 +2,15 @@ import React from "react";
 import BreadCrumbs from "../../../reuseable components/BreadCrumbs";
 import { IoCreate, IoHome } from "react-icons/io5";
 import Tabel from "../../../reuseable components/Tabel";
-import useHandleTicket from "../../../../Hook/custom hook/useHandleTicket";
 import {FiLoader} from "react-icons/fi";
 import {GoLinkExternal} from "react-icons/go";
 import { TbH2 } from "react-icons/tb";
+import useClientTickets from "../../../../Hook/custom hook/useClientTickets";
 
 
 const OpenTicket = () => {
   const openTicketThead = ['Title' , 'Description' , 'Category' , 'Priority' , 'Created At' , '']
-const {ticketsList,loading} = useHandleTicket()
+const {ticketsList,loading} = useClientTickets()
 console.log(ticketsList);
 
 

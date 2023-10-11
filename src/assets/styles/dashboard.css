@@ -68,7 +68,6 @@ ul li:hover {
   background: var(--primary-color-purple);
   color: var(--white) !important;
   border: 0;
-  border-radius: 0 !important;
 }
 .create-account__card {
   background-color: var(--white) !important;
@@ -99,4 +98,9 @@ ul li:hover {
 }
 .btn-danger:hover {
   color: var(--white) !important;
+}
+.timer_text{
+  color: var(--primary-color-purple) !important;
+  font-weight: 500 !important;
+  background-color: transparent !important;
 }

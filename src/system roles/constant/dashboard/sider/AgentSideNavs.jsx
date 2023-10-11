@@ -22,15 +22,15 @@ const AgentSideNavs = ({path}) => {
       </Menu.Item>
       <Menu.Item
         className={
-          path === "/agent-dashboard/all-ticket"
+          path === "/agent-dashboard/picked-ticket"
             ? "ant-menu-item-selected"
             : ""
         }
-        key='all-ticket '
+        key='picked-ticket '
         icon={<HiUserGroup className='fs-5 me-2' />}
-        onClick={() => navigate("all-ticket")}
+        onClick={() => navigate("picked-ticket")}
       >
-       All Tickets
+       Picked Tickets
       </Menu.Item>
       </Menu>
   </>;

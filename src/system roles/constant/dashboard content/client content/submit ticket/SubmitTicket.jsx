@@ -3,7 +3,7 @@ import BreadCrumbs from "../../../reuseable components/BreadCrumbs";
 import {IoCreate, IoHome} from "react-icons/io5";
 import CreateAccountForm from "../../admin content/create account/CreateAccountForm";
 import {useFormHandler} from "../../../../../components/authentication/constant/useFormHandler";
-import useHandleTicket from "../../../../Hook/custom hook/useHandleTicket";
+import useClientTickets from "../../../../Hook/custom hook/useClientTickets";
 
 const SubmitTicket = () => {
   const [ticketSubmitData, setticketSubmitData] = useState(TICKET_SUBMIT_DATA);
@@ -15,7 +15,7 @@ const SubmitTicket = () => {
   });
 
   //custom hook for submit ticket
-  const {handleSubmitTicket} = useHandleTicket(inputsData)
+  const {handleSubmitTicket} = useClientTickets(inputsData)
   
   return (
     <>
