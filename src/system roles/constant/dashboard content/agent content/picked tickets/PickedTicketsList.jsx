@@ -2,12 +2,12 @@ import React from "react";
 import useCounter from "../../../../Hook/custom hook/useCounter";
 import {GoLinkExternal} from "react-icons/go";
 import UserButton from "../../admin content/all users/UserButton";
+import { useNavigate } from "react-router-dom";
 
 const PickedTicketsList = ({index, currElm}) => {
-  console.log(currElm);
   const picketAtTime = currElm.pickedAt;
   const {min, sec} = useCounter(picketAtTime);
-
+  const navigate = useNavigate()
 
   return (
     <>
@@ -32,7 +32,7 @@ const PickedTicketsList = ({index, currElm}) => {
           </span>
         </td>
         <td>
-          <GoLinkExternal style={{color: "#bf00ff", cursor: "pointer" ,}} />
+          <GoLinkExternal onClick={() => navigate(`single-ticket/${currElm?._id}`)} style={{color: "#bf00ff", cursor: "pointer" ,}} />
         </td>
       </tr>
     </>

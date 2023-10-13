@@ -24,6 +24,7 @@ import AdminIndex from "./system roles/constant/dashboard content/admin content/
 import AgentIndex from "./system roles/constant/dashboard content/agent content/AgentIndex";
 import AllTickets from "./system roles/constant/dashboard content/agent content/all tickets/AllTickets";
 import PickedTicket from "./system roles/constant/dashboard content/agent content/picked tickets/PickedTicket";
+import SingleTicket from "./system roles/constant/dashboard content/agent content/single ticket/SingleTicket";
 const App = () => {
   return (
     <>
@@ -59,7 +60,8 @@ const App = () => {
         {/* agent dashboard routing */}
         <Route path='/agent-dashboard' element={<AgentDashboard />}>
         <Route index element={<AllTickets />} />
-        <Route path='picked-ticket' element={<PickedTicket />} />
+        <Route path='picked-ticket' element={<PickedTicket />}></Route>
+        <Route path='picked-ticket/single-ticket/:id' element={<SingleTicket />}/>        
 
         </Route>
 

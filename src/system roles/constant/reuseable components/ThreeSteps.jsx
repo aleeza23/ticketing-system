@@ -2,7 +2,16 @@ import {Breadcrumb} from "antd";
 import React from "react";
 import {Link} from "react-router-dom";
 
-const BreadCrumbs = ({from, to, fromPath, fromIcon, toIcon,center , centerIcon , centerPath}) => {
+const Steps = ({
+  from,
+  to,
+  fromPath,
+  fromIcon,
+  toIcon,
+  center,
+  centerIcon,
+  centerPath,
+}) => {
   return (
     <>
       <Breadcrumb
@@ -16,7 +25,17 @@ const BreadCrumbs = ({from, to, fromPath, fromIcon, toIcon,center , centerIcon ,
                 </Link>
               </b>
             ),
-          },         
+          },
+          {
+            title: (
+              <b className='d-flex align-items-center gap-2 text-muted'>
+                {centerIcon}
+                <Link to={centerPath} className='bread-text'>
+                  {center}
+                </Link>
+              </b>
+            ),
+          },
           {
             title: (
               <b className='d-flex align-items-center gap-2 breacdcrumb-active rounded  px-3'>
@@ -26,10 +45,9 @@ const BreadCrumbs = ({from, to, fromPath, fromIcon, toIcon,center , centerIcon ,
             ),
           },
         ]}
-      />    
-
+      />
     </>
   );
 };
 
-export default BreadCrumbs;
+export default Steps;

@@ -5,6 +5,7 @@ import {FiLoader} from "react-icons/fi";
 import PickedTicketsList from "./PickedTicketsList";
 import {IoCreate, IoHome} from "react-icons/io5";
 import useAgentTickets from "../../../../Hook/custom hook/useAgentTickets";
+import { Outlet } from "react-router-dom";
 
 const PickedTicket = () => {
   const pickedTicketThead = [
@@ -46,6 +47,7 @@ const PickedTicket = () => {
           ))}
         </tbody>
       </Tabel>
+
     </>
   );
 };

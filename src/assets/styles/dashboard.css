@@ -104,3 +104,13 @@ ul li:hover {
   font-weight: 500 !important;
   background-color: transparent !important;
 }
+.ant-descriptions-row{
+  
+}
+.ant-descriptions-item-label {
+  color: var(--white) !important;
+font-weight: bold !important;
+background-color: var(--primary-color-purple) !important;
+
+
+}

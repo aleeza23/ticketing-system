@@ -1,7 +1,7 @@
 import { Button, Modal } from "antd";
 import React, { useState } from "react";
 
-const AppModal = ({setmodal, modal, children ,title,footer}) => {
+const AppModal = ({setmodal, modal, children ,title,footer,width}) => {
     
   return <>
       
@@ -10,8 +10,9 @@ const AppModal = ({setmodal, modal, children ,title,footer}) => {
         centered
         open={modal}
         onCancel={() => setmodal(false)}
-        width={600}
+        width={width}
         footer={footer}
+        className="constant__text"
       >
         {children}
       </Modal>

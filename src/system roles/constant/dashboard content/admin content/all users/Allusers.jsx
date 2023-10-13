@@ -24,7 +24,7 @@ const Allusers = ({tittle, API}) => {
             <List.Item
               actions={[
                 <Link
-                  key='list-loadmore-edit'
+                  key='list-loadmore-edit'                  
                   onClick={() => {
                     setmodal(true);
                     seteditCurrentUser(item);
@@ -67,7 +67,7 @@ const Allusers = ({tittle, API}) => {
           className='form-control'
           value={editCurrentUser.role}
         />
-        <Button className='create-account__btn px-4 py-1 fw-bold  mt-3 ms-auto'>
+        <Button className='create-account__btn purple__btn px-4 py-1 fw-bold  mt-3 ms-auto'>
           Edit
         </Button>
       </AppModal>

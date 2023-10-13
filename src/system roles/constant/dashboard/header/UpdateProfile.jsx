@@ -32,6 +32,7 @@ const UpdateProfile = ({modal, setmodal}) => {
         setmodal={setmodal}
         modal={modal}
         footer={null}
+        width={600}
       >
         <div className='row '>
           <input type='file' accept='images/*' className='form-control mb-3 ' />
