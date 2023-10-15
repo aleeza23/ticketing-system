@@ -9,22 +9,24 @@ import ManagerDashboard from "./system roles/manager/manager dashboard/ManagerDa
 import AgentDashboard from "./system roles/agent/agent dashboard/AgentDashboard";
 import ClientDashboard from "./system roles/client/client dashboard/ClientDashboard";
 import RoleBasedRouting from "./components/protected routes/RoleBasedRouting";
-import AdminAllUsers from "./system roles/admin/components/AdminAllUsers";
-import Dashboard from "./system roles/constant/dashboard content/admin content/AdminIndex";
+import AdminAllUsers from "./system roles/admin/components/all users/AdminAllUsers";
 import AllUsersAgent from "./system roles/constant/dashboard content/admin content/all users/AllUsersAgent";
 import AllUsersAdmin from "./system roles/constant/dashboard content/admin content/all users/AllUsersAdmin";
 import AllUsersManager from "./system roles/constant/dashboard content/admin content/all users/AllUsersManager";
 import AllUsersClient from "./system roles/constant/dashboard content/admin content/all users/AllUsersClient";
-import CreateAccount from "./system roles/constant/dashboard content/admin content/create account/CreateAccount";
+import CreateAccount from "./system roles/admin/components/create account/CreateAccount";
 import Category from "./system roles/constant/dashboard content/admin content/category/Category.jsx";
-import ClientIndex from "./system roles/constant/dashboard content/client content/ClientIndex";
-import SubmitTicket from "./system roles/constant/dashboard content/client content/submit ticket/SubmitTicket";
+import ClientIndex from "./system roles/client/components/client index/ClientIndex";
+import SubmitTicket from "./system roles/client/components/submit ticket/SubmitTicket";
 import OpenTicket from "./system roles/constant/dashboard content/client content/open ticket/OpenTicket";
-import AdminIndex from "./system roles/constant/dashboard content/admin content/AdminIndex";
-import AgentIndex from "./system roles/constant/dashboard content/agent content/AgentIndex";
+import AdminIndex from "./system roles/admin/components/admin index/AdminIndex";
+import AgentIndex from "./system roles/agent/components/agent index/AgentIndex";
 import AllTickets from "./system roles/constant/dashboard content/agent content/all tickets/AllTickets";
 import PickedTicket from "./system roles/constant/dashboard content/agent content/picked tickets/PickedTicket";
-import SingleTicket from "./system roles/constant/dashboard content/agent content/single ticket/SingleTicket";
+import SingleTicket from "./system roles/agent/components/single ticket/SingleTicket";
+import ManagerAllUsers from "./system roles/manager/components/all users/ManagerAllUsers";
+import EsclatedTickets from "./system roles/manager/components/esclaated tickets/EsclatedTickets";
+import ManagerIndex from "./system roles/manager/components/manager index/ManagerIndex";
 const App = () => {
   return (
     <>
@@ -65,8 +67,18 @@ const App = () => {
 
         </Route>
 
+        {/* manager dashboard routing */}
+        <Route path='/manager-dashboard' element={<ManagerDashboard />}> 
+        <Route index element={<ManagerIndex />} />
+        <Route path='escalated-ticket' element={<EsclatedTickets />} />
+        <Route path='escalated-ticket/single-ticket/:id' element={<SingleTicket />}/>      
 
-        <Route path='/manager-dashboard' element={<ManagerDashboard />} />
+        <Route path='all-users' element={<ManagerAllUsers />}>
+        <Route index element={<AllUsersAgent />} />
+        <Route path='clients' element={<AllUsersClient />} />
+        </Route>
+        </Route>
+
         <Route path='/protected-routes' element={<RoleBasedRouting />} />
       </Routes>
     </>

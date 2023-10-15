@@ -5,6 +5,7 @@ import AdminSideNavs from "./AdminSideNavs";
 import ClientSideNavs from "./ClientSideNavs";
 import { useLocation, useNavigate } from "react-router-dom";
 import AgentSideNavs from "./AgentSideNavs";
+import ManagerSideNavs from "./ManagerSideNavs";
 
 
 const SiderMenu = () => {
@@ -31,6 +32,13 @@ const SiderMenu = () => {
          {auth && auth?.user && auth?.user?.role === "agent" && (
           <>
             <AgentSideNavs path={path} />
+          </>
+        )}
+
+          {/* manager side menu */}
+          {auth && auth?.user && auth?.user?.role === "manager" && (
+          <>
+            <ManagerSideNavs path={path} />
           </>
         )}
       

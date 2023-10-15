@@ -1,31 +1,31 @@
 import {Avatar, Card, List} from "antd";
 import React from "react";
-import useSingleTicket from "../../../../Hook/custom hook/useSingleTicket";
+import useSingleTicket from "../../../Hook/custom hook/useSingleTicket";
 import { Link } from "react-router-dom";
 
-const SingleTicketComment = ({children ,allComments,loading ,deleteComment}) => {
+const SingleTicketComment = ({children ,dataSource,loading,setmodal,setcurrentComment ,deleteFun,firstBtn,secBtn}) => {
   return (
     <>
       <Card className='mt-3 constant__text' title={children}>
       <List
           itemLayout='horizontal'
-          dataSource={allComments}
+          dataSource={dataSource}
           loading={loading}
           renderItem={(item, index) => (
             <List.Item
               actions={[
                 <Link
                   key='list-loadmore-edit'                  
-                 
+                 onClick={() => {setmodal(true); setcurrentComment(item)}  }
                 >
-                  reply
+                  {firstBtn}
                 </Link>,
                 <Link
                   key='list-loadmore-delete'
                   className='text-danger text-decoration-none'
-                  onClick={() => deleteComment(item._id) }
+                  onClick={() => deleteFun(item._id) }
                 >
-                  Delete
+                  {secBtn}
                 </Link>,
               ]}
             >

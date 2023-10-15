@@ -3,7 +3,7 @@ import Dashboard from "../../constant/dashboard/Dashboard";
 import {Card} from "antd";
 import ProtectedRoutes from "../../../components/protected routes/ProtectedRoutes";
 import {AuthContext} from "../../../context/authContext";
-import AdminAllUsers from "../components/AdminAllUsers";
+import AdminAllUsers from "../components/all users/AdminAllUsers";
 import {Outlet} from "react-router-dom";
 
 const AdminDashboard = () => {

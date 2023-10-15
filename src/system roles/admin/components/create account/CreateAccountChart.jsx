@@ -1,5 +1,5 @@
 import React from "react";
-import LineCharts from "../../../reuseable components/LineCharts";
+import LineCharts from "../../../constant/reuseable components/LineCharts";
 
 const CreateAccountChart = () => {
   return (

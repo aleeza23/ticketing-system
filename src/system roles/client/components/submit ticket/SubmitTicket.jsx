@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import BreadCrumbs from "../../../reuseable components/BreadCrumbs";
+import BreadCrumbs from "../../../constant/reuseable components/BreadCrumbs";
 import {IoCreate, IoHome} from "react-icons/io5";
-import CreateAccountForm from "../../admin content/create account/CreateAccountForm";
-import {useFormHandler} from "../../../../../components/authentication/constant/useFormHandler";
-import useClientTickets from "../../../../Hook/custom hook/useClientTickets";
+import CreateAccountForm from "../../../admin/components/create account/CreateAccountForm";
+import {useFormHandler} from "../../../../components/authentication/constant/useFormHandler";
+import useClientTickets from "../../../Hook/custom hook/useClientTickets";
 
 const SubmitTicket = () => {
   const [ticketSubmitData, setticketSubmitData] = useState(TICKET_SUBMIT_DATA);

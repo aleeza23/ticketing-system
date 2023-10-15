@@ -1,9 +1,9 @@
 import React from "react";
 import {Card} from "antd";
-import Button from "../../../../../partials/Button";
-import "../../../../../components/authentication/constant/Form.css";
+import Button from "../../../../partials/Button";
+import "../../../../components/authentication/constant/Form.css";
 import {AiOutlineLoading3Quarters} from "react-icons/ai";
-import useHandleCategory from "../../../../Hook/custom hook/useHandleCategory";
+import useHandleCategory from "../../../Hook/custom hook/useHandleCategory";
 
 const CreateAccountForm = ({
   inputsData,

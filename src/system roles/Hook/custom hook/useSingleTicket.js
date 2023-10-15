@@ -3,12 +3,16 @@ import React, {useContext, useEffect, useState} from "react";
 import {AuthContext} from "../../../context/authContext";
 import toast from "react-hot-toast";
 
-const useSingleTicket = (id) => {
+const useSingleTicket = (id, COMMENT_ID) => {
   const {auth} = useContext(AuthContext);
   const [comment, setcomment] = useState("Hello world");
+  const [reason, setreason] = useState("");
+  const [reply, setreply] = useState("");
   const [loading, setloading] = useState(false);
   const [allComments, setallComments] = useState([]);
+  const [allReplies, setallReplies] = useState([]);
   const [commentsLoading, setcommentsLoading] = useState(false);
+  const [replyLoading, setreplyLoading] = useState(false);
 
   //put request to add comment
   const addComment = () => {
@@ -40,22 +44,24 @@ const useSingleTicket = (id) => {
   //get request to get all comments data
   useEffect(() => {
     setcommentsLoading(true);
-    axios
-      .get(`http://localhost:9000/api/by/agent/single/${id}`, {
-        headers: {
-          Authorization: `Bearer ${auth?.token}`,
-        },
-      })
-      .then((res) => {
-        console.log(res, "get request for comments");
-        setallComments(res?.data?.comments);
-        setcommentsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Failed to get all commets");
-        setcommentsLoading(false);
-      });
+    if (id) {
+      axios
+        .get(`http://localhost:9000/api/by/agent/single/${id}`, {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        })
+        .then((res) => {
+          // console.log(res, "get request for comments");
+          setallComments(res?.data?.comments);
+          setcommentsLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Failed to get all commets");
+          setcommentsLoading(false);
+        });
+    }
   }, [auth && auth.token]);
 
   //delete request to delete comment
@@ -83,6 +89,113 @@ const useSingleTicket = (id) => {
       });
   };
 
+  //put request to escalate ticket
+  const escalateTicket = () => {
+    setloading(true);
+    axios
+      .put(
+        "http://localhost:9000/api/escalated-ticket",
+        {ticketId: id, content: reason},
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        if (reason === "") {
+          toast.error("Reason is required !");
+        } else if (res.data?.ok) {
+          toast.success(res.data.message);
+          setreason("");
+        }
+        setloading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to put");
+        setloading(false);
+      });
+  };
+
+  //post request to post reply
+  const addReply = () => {
+    setreplyLoading(true);
+    if (COMMENT_ID) {
+      axios
+        .post(
+          "http://localhost:9000/api/add/reply",
+          {commentId: COMMENT_ID, content: reply},
+          {
+            headers: {
+              Authorization: `Bearer ${auth?.token}`,
+            },
+          }
+        )
+        .then((res) => {
+          if (res.data?.ok) {
+            toast.success("Reply added");
+            setallReplies([...allReplies, res?.data?._reply]);
+            // console.log(res.data , 'i am loging');
+            setreply("");
+            setreplyLoading(false);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Your reply is required!");
+          setreplyLoading(false);
+        });
+    }
+  };
+  //get request to get all comments data
+  useEffect(() => {
+    setreplyLoading(true);
+    if (COMMENT_ID) {
+      axios
+        .get(`http://localhost:9000/api/replies/${COMMENT_ID}`, {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        })
+        .then((res) => {
+          // console.log(res, "get request for reply");
+          setallReplies(res?.data?._replies);
+          setreplyLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          toast.error("Failed to get all replies");
+          setreplyLoading(false);
+        });
+    }
+  }, [auth && auth.token, COMMENT_ID]);
+
+  //delete request to delete comment
+  const deleteReply = (reply_id) => {
+    setreplyLoading(true);
+    axios
+      .put(`http://localhost:9000/api/remove/reply/${reply_id}`, auth, {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`,
+        },
+      })
+      .then((res) => {
+        if (res.data?.ok) {
+          setallReplies(
+            allReplies.filter((currElm) => currElm._id !== reply_id)
+          );
+          setreplyLoading(false);
+          toast.success("Reply deleted");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to delete reply");
+        setreplyLoading(false);
+      });
+  };
+
   return {
     addComment,
     comment,
@@ -91,6 +204,15 @@ const useSingleTicket = (id) => {
     loading,
     commentsLoading,
     deleteComment,
+    reason,
+    setreason,
+    escalateTicket,
+    reply,
+    setreply,
+    addReply,
+    allReplies,
+    deleteReply,
+    replyLoading,
   };
 };
 

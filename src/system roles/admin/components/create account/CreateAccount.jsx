@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import BreadCrumbs from "../../../reuseable components/BreadCrumbs";
+import BreadCrumbs from "../../../constant/reuseable components/BreadCrumbs";
 import {IoCreate, IoHome,} from "react-icons/io5";
-import {useFormHandler} from "../../../../../components/authentication/constant/useFormHandler";
+import {useFormHandler} from "../../../../components/authentication/constant/useFormHandler";
 import {AiFillEyeInvisible, AiFillEye} from "react-icons/ai";
 import CreateAccountForm from "./CreateAccountForm";
 import CreateAccountChart from "./CreateAccountChart";
-import useCreateAccount from "../../../../Hook/custom hook/useCreateAccount";
+import useCreateAccount from "../../../Hook/custom hook/useCreateAccount";
 
 
 const CreateAccount = () => {
