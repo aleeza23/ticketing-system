@@ -3,7 +3,7 @@ import UserButton from "./UserButton";
 import {Space} from "antd";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../../../../../context/authContext";
+import { AuthContext } from "../../../../context/authContext";
 
 const AllUsersButton = () => {
   const navigate = useNavigate()

@@ -1,7 +1,7 @@
 import React from "react";
-import useCounter from "../../../../Hook/custom hook/useCounter";
+import useCounter from "../../../Hook/custom hook/useCounter";
 import {GoLinkExternal} from "react-icons/go";
-import UserButton from "../../admin content/all users/UserButton";
+import UserButton from "../../../admin/components/all users/UserButton";
 import { useNavigate } from "react-router-dom";
 
 const PickedTicketsList = ({index, currElm}) => {

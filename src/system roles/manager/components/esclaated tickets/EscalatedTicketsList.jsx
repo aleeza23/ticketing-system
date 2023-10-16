@@ -1,5 +1,5 @@
 import React from "react";
-import UserButton from "../../../constant/dashboard content/admin content/all users/UserButton";
+import UserButton from "../../../admin/components/all users/UserButton";
 import { GoLinkExternal } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 

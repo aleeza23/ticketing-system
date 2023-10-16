@@ -1,10 +1,10 @@
 import React from "react";
-import BreadCrumbs from "../../../reuseable components/BreadCrumbs";
-import Tabel from "../../../reuseable components/Tabel";
+import BreadCrumbs from "../../../constant/reuseable components/BreadCrumbs";
+import Tabel from "../../../constant/reuseable components/Tabel";
 import {FiLoader} from "react-icons/fi";
 import PickedTicketsList from "./PickedTicketsList";
 import {IoCreate, IoHome} from "react-icons/io5";
-import useAgentTickets from "../../../../Hook/custom hook/useAgentTickets";
+import useAgentTickets from "../../../Hook/custom hook/useAgentTickets";
 import { Outlet } from "react-router-dom";
 
 const PickedTicket = () => {

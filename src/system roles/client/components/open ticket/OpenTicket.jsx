@@ -1,11 +1,11 @@
 import React from "react";
-import BreadCrumbs from "../../../reuseable components/BreadCrumbs";
+import BreadCrumbs from "../../../constant/reuseable components/BreadCrumbs";
 import { IoCreate, IoHome } from "react-icons/io5";
-import Tabel from "../../../reuseable components/Tabel";
+import Tabel from "../../../constant/reuseable components/Tabel";
 import {FiLoader} from "react-icons/fi";
 import {GoLinkExternal} from "react-icons/go";
 import { TbH2 } from "react-icons/tb";
-import useClientTickets from "../../../../Hook/custom hook/useClientTickets";
+import useClientTickets from "../../../Hook/custom hook/useClientTickets";
 
 
 const OpenTicket = () => {

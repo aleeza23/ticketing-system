@@ -1,8 +1,8 @@
 import { Card, List } from "antd";
 import React, { useState } from "react";
-import Button from "../../../../../partials/Button";
-import '../../../../../components/authentication/constant/Form.css'
-import  useHandleCategory  from "../../../../Hook/custom hook/useHandleCategory";
+import Button from "../../../../partials/Button";
+import '../../../../components/authentication/constant/Form.css'
+import  useHandleCategory  from "../../../Hook/custom hook/useHandleCategory";
 import { Link } from "react-router-dom";
 
 

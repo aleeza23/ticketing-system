@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import {GoLinkExternal} from "react-icons/go";
-import useCounter from "../../../../Hook/custom hook/useCounter";
-import UserButton from "../../admin content/all users/UserButton";
-import useHandleTicket from "../../../../Hook/custom hook/useClientTickets";
-import useAgentTickets from "../../../../Hook/custom hook/useAgentTickets";
+import useCounter from "../../../Hook/custom hook/useCounter";
+import UserButton from "../../../admin/components/all users/UserButton";
+import useAgentTickets from "../../../Hook/custom hook/useAgentTickets";
 
 const AllTicketsList = ({index, currElm}) => {
   console.log(currElm);
