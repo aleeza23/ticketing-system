@@ -44,6 +44,18 @@ const ClientSideNavs = ({path}) => {
       >
         Open Ticket
       </Menu.Item>
+      <Menu.Item
+        className={
+          path === "/client-dashboard/resolved-ticket"
+            ? "ant-menu-item-selected"
+            : ""
+        }
+        key='resolved-ticket '
+        icon={<HiUserGroup className='fs-5 me-1' />}
+        onClick={() => navigate("resolved-ticket")}
+      >
+       Resolved Tickets
+      </Menu.Item>
       </Menu>
     </>
   );

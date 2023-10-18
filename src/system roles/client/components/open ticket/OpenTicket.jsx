@@ -6,12 +6,14 @@ import {FiLoader} from "react-icons/fi";
 import {GoLinkExternal} from "react-icons/go";
 import { TbH2 } from "react-icons/tb";
 import useClientTickets from "../../../Hook/custom hook/useClientTickets";
+import { useNavigate } from "react-router-dom";
 
 
 const OpenTicket = () => {
   const openTicketThead = ['Title' , 'Description' , 'Category' , 'Priority' , 'Created At' , '']
 const {ticketsList,loading} = useClientTickets()
-console.log(ticketsList);
+// console.log(ticketsList);
+const navigate = useNavigate()
 
 
   return <>
@@ -38,7 +40,7 @@ console.log(ticketsList);
                 <td>{currElm.priority}</td>
                 <td>{currElm.createdAt.slice(0, 10)}</td>
                 <td>
-                  <GoLinkExternal
+                  <GoLinkExternal onClick={() => navigate(`single-ticket/${currElm?._id}`)}
                     style={{color: "#bf00ff", cursor: "pointer"}}
                   />
                 </td>

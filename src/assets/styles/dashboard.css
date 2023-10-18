@@ -114,3 +114,6 @@ background-color: var(--primary-color-purple) !important;
 
 
 }
+.text_purple{
+  color: var(--primary-color-purple) !important;
+}

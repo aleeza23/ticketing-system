@@ -5,12 +5,16 @@ import toast from "react-hot-toast";
 
 const useSingleTicket = (id, COMMENT_ID) => {
   const {auth} = useContext(AuthContext);
-  const [comment, setcomment] = useState("Hello world");
+  const [comment, setcomment] = useState("I have recieved your ticket, i'm working onit. If you have any query please do comment here.");
   const [reason, setreason] = useState("");
+  const [handoverReason, sethandoverReason] = useState("");
   const [reply, setreply] = useState("");
+  const [selectAgent, setselectAgent] = useState("");
   const [loading, setloading] = useState(false);
   const [allComments, setallComments] = useState([]);
+  const [single, setsingle] = useState({});
   const [allReplies, setallReplies] = useState([]);
+  const [availAbleAgents, setavailAbleAgents] = useState([]);
   const [commentsLoading, setcommentsLoading] = useState(false);
   const [replyLoading, setreplyLoading] = useState(false);
 
@@ -53,6 +57,7 @@ const useSingleTicket = (id, COMMENT_ID) => {
         })
         .then((res) => {
           // console.log(res, "get request for comments");
+          setsingle(res.data);
           setallComments(res?.data?.comments);
           setcommentsLoading(false);
         })
@@ -196,6 +201,106 @@ const useSingleTicket = (id, COMMENT_ID) => {
       });
   };
 
+  //put request toresolve ticket
+  const resolveTicket = () => {
+    setloading(true);
+    axios
+      .put(
+        `http://localhost:9000/api/resolved-tc/${id}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        if (res.data?.ok) {
+          toast.success(res.data.message);
+        }
+        setloading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to resolve");
+        setloading(false);
+      });
+  };
+
+  //get request to get all available  agents
+  useEffect(() => {
+    setloading(true);
+
+    axios
+      .get("http://localhost:9000/api/available-agents", {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`,
+        },
+      })
+      .then((res) => {
+        // console.log(res, "avail");
+        setavailAbleAgents(res.data.agents);
+        setloading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to get all available agents");
+        setloading(false);
+      });
+  }, [auth && auth.token]);
+
+  //put resquest to handover ticket
+  const handoverTicket = () => {
+    setloading(true);
+    axios
+      .put(
+        "http://localhost:9000/api/handover-ticket",
+        {handoverReason, ticketId: id, selectAgent},
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        sethandoverReason("");
+        setselectAgent("");
+        setloading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to handover");
+        setloading(false);
+      });
+  };
+
+  //put resquest to assign ticket
+  const assignTicket = () => {
+    setloading(true);
+    axios
+      .put(
+        "http://localhost:9000/api/assign-ticket",
+        {handoverReason, ticketId: id, selectAgent},
+        {
+          headers: {
+            Authorization: `Bearer ${auth?.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        sethandoverReason("");
+        setselectAgent("");
+        setloading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to handover");
+        setloading(false);
+      });
+  };
+
   return {
     addComment,
     comment,
@@ -213,6 +318,15 @@ const useSingleTicket = (id, COMMENT_ID) => {
     allReplies,
     deleteReply,
     replyLoading,
+    resolveTicket,
+    selectAgent,
+    setselectAgent,
+    availAbleAgents,
+    handoverTicket,
+    handoverReason,
+    sethandoverReason,
+    single,
+    assignTicket,
   };
 };
 

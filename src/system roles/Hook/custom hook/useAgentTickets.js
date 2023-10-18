@@ -7,6 +7,9 @@ const useAgentTickets = () => {
   const [pickedTicketsList, setpickedTicketsList] = useState([]);
   const [loading, setloading] = useState(false);
   const [ticketsList, setticketsList] = useState([]);
+  const [allResolved, setallResolved] = useState([]);
+  const [handoverTickets, sethandoverTickets] = useState([]);  
+  const [assignTickets, setassignTickets] = useState([]);
   const {auth} = useContext(AuthContext);
 
   //api call to get ticket list for agent
@@ -84,11 +87,79 @@ const useAgentTickets = () => {
         setloading(false);
       });
   };
+  //get request to get all assign  tickets
+  useEffect(() => {
+    setloading(true);
+
+    axios
+      .get("http://localhost:9000/api/assign-to-me", {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`,
+        },
+      })
+      .then((res) => {
+        // console.log(res, "assign tickets");
+        setassignTickets(res.data.tickets);
+        setloading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to get all assign tickets");
+        setloading(false);
+      });
+  }, [auth && auth.token]);
+
+   //get request to get all handover  tickets
+  useEffect(() => {
+    setloading(true);
+
+    axios
+      .get("http://localhost:9000/api/handover-to-me", {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`,
+        },
+      })
+      .then((res) => {
+        // console.log(res, "handover tickets");
+        sethandoverTickets(res.data.tickets);
+        setloading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to get all handover tickets");
+        setloading(false);
+      });
+  }, [auth && auth.token]);
+
+    //get request to get all resolved tickets
+  useEffect(() => {
+    setloading(true);
+
+    axios
+      .get("http://localhost:9000/api/my-resolved", {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`,
+        },
+      })
+      .then((res) => {
+        // console.log(res);
+        setallResolved(res.data.tickets);
+        setloading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to get all resolved");
+        setloading(false);
+      });
+  }, [auth && auth.token]);
   return {
     handlePickTicket,
     pickedTicketsList,
     loading,
-    ticketsList
+    ticketsList,
+    allResolved,    
+    handoverTickets,    
+    assignTickets
   };
 };
 

@@ -10,9 +10,8 @@ import useSingleTicket from "../../../Hook/custom hook/useSingleTicket";
 import {AuthContext} from "../../../../context/authContext";
 import SingleReply from "./SingleReply";
 
-const SingleTicket = () => {
-  const [escalatemodal, setescalatemodal] = useState(false);
-  const [replyModal, setreplyModal] = useState(false);
+const SingleTicket = ({from}) => {
+  const [replyModal, setreplyModal] = useState(false);  
   const [currentComment, setcurrentComment] = useState({});
   const {id} = useParams();
   const {auth} = useContext(AuthContext);
@@ -30,7 +29,9 @@ const SingleTicket = () => {
     addReply,
     reply,
     setreply,
+    single
   } = useSingleTicket(id, currentComment?._id);
+  // console.log(single);
 
   return (
     <>
@@ -59,10 +60,11 @@ const SingleTicket = () => {
         />
       )}
 
-      <SingleTicketHeader
-        setmodal={setescalatemodal}
-        modal={escalatemodal}
+      <SingleTicketHeader        
         id={id}
+        from={from}
+        single={single}
+
       />
       <SingleTicketDescription />
       <SingleTicketComment
@@ -74,6 +76,7 @@ const SingleTicket = () => {
         setmodal={setreplyModal}
         setcurrentComment={setcurrentComment}
       >
+      {from === 'manager' ? 'All Comments' : (
         <div className='input-group my-4'>
           <textarea
             type='text'
@@ -87,6 +90,8 @@ const SingleTicket = () => {
             Add Comment
           </Button>
         </div>
+      )}
+        
       </SingleTicketComment>
       <SingleReply
         setmodal={setreplyModal}

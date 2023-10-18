@@ -7,8 +7,11 @@ import {Toast} from "bootstrap";
 
 const useClientTickets = (data) => {
   const [loading, setloading] = useState(false);
+  const [singleLoading, setsingleLoading] = useState(false);  
   const {auth} = useContext(AuthContext);
   const [ticketsList, setticketsList] = useState([]);
+  const [resolvedTickets, setresolvedTickets] = useState([]);
+  const [singleOpenTicket, setsingleOpenTicket] = useState([]);
 
   const navigate = useNavigate();
 
@@ -47,7 +50,7 @@ const useClientTickets = (data) => {
         },
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setticketsList(res.data.tickets);
         setloading(false);
       })
@@ -58,13 +61,36 @@ const useClientTickets = (data) => {
       });
   }, [auth && auth.token]);
 
-  
+  //api call to get resolved tickets
+  useEffect(() => {
+    setloading(true);
+    axios
+      .get("http://localhost:9000/api/resolved-tickets", {
+        headers: {
+          Authorization: `Bearer ${auth?.token}`,
+        },
+      })
+      .then((res) => {
+        // console.log(res);
+        setresolvedTickets(res.data.tickets);
+        setloading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Failed to get client resolved tickets");
+        setloading(false);
+      });
+  }, [auth && auth.token]);
 
+  
 
   return {
     handleSubmitTicket,
     ticketsList,
     loading,
+    resolvedTickets,
+    singleOpenTicket,
+    singleLoading
   };
 };
 

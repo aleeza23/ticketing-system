@@ -27,6 +27,14 @@ import SingleTicket from "./system roles/agent/components/single ticket/SingleTi
 import ManagerAllUsers from "./system roles/manager/components/all users/ManagerAllUsers";
 import EsclatedTickets from "./system roles/manager/components/esclaated tickets/EsclatedTickets";
 import ManagerIndex from "./system roles/manager/components/manager index/ManagerIndex";
+import HandoverTickets from "./system roles/agent/components/handover tickets/HandoverTickets";
+import AssignTickets from "./system roles/agent/components/assign tickets/AssignTickets";
+import ResolvedTickets from "./system roles/agent/components/resolved tickets/ResolvedTickets";
+import HandOverSingle from "./system roles/agent/components/handover tickets/HandOverSingle";
+import EscalatedSingle from "./system roles/manager/components/esclaated tickets/EscalatedSingle";
+import ClientResolvedTickets from "./system roles/client/components/resolved ticket/ClientResolvedTickets";
+import ClientResolvedSingle from "./system roles/client/components/resolved ticket/ClientResolvedSingle";
+import ClientOpenSingle from "./system roles/client/components/open ticket/ClientOpenSingle";
 const App = () => {
   return (
     <>
@@ -56,14 +64,24 @@ const App = () => {
         <Route path='/client-dashboard' element={<ClientDashboard />}>
         <Route index element={<ClientIndex />} />
         <Route path='submit-ticket' element={<SubmitTicket />} />
-        <Route path='open-ticket' element={<OpenTicket />} />          
+        <Route path='open-ticket' element={<OpenTicket />} />  
+        <Route path='open-ticket/single-ticket/:id' element={<ClientOpenSingle />}/>
+        <Route path='resolved-ticket' element={<ClientResolvedTickets />} />          
+        <Route path='resolved-ticket/single-ticket/:id' element={<ClientResolvedSingle />}/> 
+
         </Route>
 
         {/* agent dashboard routing */}
         <Route path='/agent-dashboard' element={<AgentDashboard />}>
         <Route index element={<AllTickets />} />
-        <Route path='picked-ticket' element={<PickedTicket />}></Route>
-        <Route path='picked-ticket/single-ticket/:id' element={<SingleTicket />}/>        
+        <Route path='picked-ticket' element={<PickedTicket />}/>
+        <Route path='picked-ticket/single-ticket/:id' element={<SingleTicket />}/> 
+        <Route path='handover-ticket' element={<HandoverTickets />}/>
+        <Route path='handover-ticket/single-ticket/:id' element={<HandOverSingle />}/> 
+        <Route path='assign-ticket' element={<AssignTickets />}/>
+        <Route path='assign-ticket/single-ticket/:id' element={<HandOverSingle />}/> 
+        <Route path='resolved-ticket' element={<ResolvedTickets />}/>
+
 
         </Route>
 
@@ -71,7 +89,7 @@ const App = () => {
         <Route path='/manager-dashboard' element={<ManagerDashboard />}> 
         <Route index element={<ManagerIndex />} />
         <Route path='escalated-ticket' element={<EsclatedTickets />} />
-        <Route path='escalated-ticket/single-ticket/:id' element={<SingleTicket />}/>      
+        <Route path='escalated-ticket/single-ticket/:id' element={<EscalatedSingle />}/>      
 
         <Route path='all-users' element={<ManagerAllUsers />}>
         <Route index element={<AllUsersAgent />} />
