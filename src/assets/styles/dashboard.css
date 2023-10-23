@@ -117,3 +117,14 @@ background-color: var(--primary-color-purple) !important;
 .text_purple{
   color: var(--primary-color-purple) !important;
 }
+.ant-drawer-content-wrapper{
+  box-shadow: none !important;
+}
+.ant-drawer-content{
+background: var(--primary-color) !important;
+}
+.ant-drawer-header{
+  background-color: var(--white) !important;
+  font-family: var(--heading-font-family);
+  color: var(--primary-color-purple) !important;
+}

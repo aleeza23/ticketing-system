@@ -15,6 +15,8 @@ const SingleTicket = ({from}) => {
   const [currentComment, setcurrentComment] = useState({});
   const {id} = useParams();
   const {auth} = useContext(AuthContext);
+  const [handoverModal, sethandoverModal] = useState(false);
+
 
   const {
     addComment,
@@ -33,6 +35,7 @@ const SingleTicket = ({from}) => {
   } = useSingleTicket(id, currentComment?._id);
   // console.log(single);
 
+  
   return (
     <>
       {auth && auth?.user?.role === "agent" && (
@@ -64,9 +67,12 @@ const SingleTicket = ({from}) => {
         id={id}
         from={from}
         single={single}
+        sethandoverModal={sethandoverModal}
+        handoverModal={handoverModal}
 
       />
-      <SingleTicketDescription />
+      <SingleTicketDescription single={single} />
+      
       <SingleTicketComment
         dataSource={allComments}
         loading={commentsLoading}
@@ -119,6 +125,10 @@ const SingleTicket = ({from}) => {
           </Button>
         </div>
       </SingleReply>
+
+
+
+
     </>
   );
 };

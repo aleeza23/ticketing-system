@@ -1,13 +1,25 @@
 import {Avatar, Card, List} from "antd";
-import React from "react";
+import React, {useContext} from "react";
 import useSingleTicket from "../../../Hook/custom hook/useSingleTicket";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
+import {AuthContext} from "../../../../context/authContext";
 
-const SingleTicketComment = ({children ,dataSource,loading,setmodal,setcurrentComment ,deleteFun,firstBtn,secBtn}) => {
+const SingleTicketComment = ({
+  children,
+  dataSource,
+  loading,
+  setmodal,
+  setcurrentComment,
+  deleteFun,
+  firstBtn,
+  secBtn,
+}) => {
+  const {auth} = useContext(AuthContext);
+
   return (
     <>
       <Card className='mt-3 constant__text' title={children}>
-      <List
+        <List
           itemLayout='horizontal'
           dataSource={dataSource}
           loading={loading}
@@ -15,18 +27,23 @@ const SingleTicketComment = ({children ,dataSource,loading,setmodal,setcurrentCo
             <List.Item
               actions={[
                 <Link
-                  key='list-loadmore-edit'                  
-                 onClick={() => {setmodal(true); setcurrentComment(item)}  }
+                  key='list-loadmore-edit'
+                  onClick={() => {
+                    setmodal(true);
+                    setcurrentComment(item);
+                  }}
                 >
                   {firstBtn}
                 </Link>,
-                <Link
-                  key='list-loadmore-delete'
-                  className='text-danger text-decoration-none'
-                  onClick={() => deleteFun(item._id) }
-                >
-                  {secBtn}
-                </Link>,
+                item?.createdBy === auth?.user?._id && (
+                  <Link
+                    key='list-loadmore-delete'
+                    className='text-danger text-decoration-none'
+                    onClick={() => deleteFun(item._id)}
+                  >
+                    {secBtn}
+                  </Link>
+                ),
               ]}
             >
               <List.Item.Meta

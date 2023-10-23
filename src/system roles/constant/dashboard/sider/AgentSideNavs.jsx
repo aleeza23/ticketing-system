@@ -1,7 +1,11 @@
 import {Menu} from "antd";
 import React from "react";
 import {AiTwotoneHome} from "react-icons/ai";
+import { BsFolderSymlink, BsFolderSymlinkFill } from "react-icons/bs";
+import {BiFolderPlus} from "react-icons/bi";
 import {HiUserGroup} from "react-icons/hi";
+import {LuFolderInput, LuFolderOutput} from "react-icons/lu";
+import { MdCollectionsBookmark } from "react-icons/md";
 import {useLocation, useNavigate} from "react-router-dom";
 
 
@@ -22,12 +26,24 @@ const AgentSideNavs = ({path}) => {
       </Menu.Item>
       <Menu.Item
         className={
+          path === "/agent-dashboard/all-ticket"
+            ? "ant-menu-item-selected"
+            : ""
+        }
+        key='all-ticket '
+        icon={<MdCollectionsBookmark className='fs-5 me-1' />}
+        onClick={() => navigate("all-ticket")}
+      >
+       All Tickets
+      </Menu.Item>
+      <Menu.Item
+        className={
           path === "/agent-dashboard/picked-ticket"
             ? "ant-menu-item-selected"
             : ""
         }
         key='picked-ticket '
-        icon={<HiUserGroup className='fs-5 me-1' />}
+        icon={<BiFolderPlus className='fs-5 me-1' />}
         onClick={() => navigate("picked-ticket")}
       >
        Picked Tickets
@@ -39,7 +55,7 @@ const AgentSideNavs = ({path}) => {
             : ""
         }
         key='handover-ticket '
-        icon={<HiUserGroup className='fs-5 me-1' />}
+        icon={<BsFolderSymlink className='fs-5 me-1' />}
         onClick={() => navigate("handover-ticket")}
       >
        Handover Tickets
@@ -51,7 +67,7 @@ const AgentSideNavs = ({path}) => {
             : ""
         }
         key='assign-ticket '
-        icon={<HiUserGroup className='fs-5 me-1' />}
+        icon={<LuFolderInput className='fs-5 me-1' />}
         onClick={() => navigate("assign-ticket")}
       >
        Assign Tickets
@@ -63,11 +79,12 @@ const AgentSideNavs = ({path}) => {
             : ""
         }
         key='resolved-ticket '
-        icon={<HiUserGroup className='fs-5 me-1' />}
+        icon={<LuFolderOutput className='fs-5 me-1' />}
         onClick={() => navigate("resolved-ticket")}
       >
        Resolved Tickets
       </Menu.Item>
+    
       </Menu>
   </>;
 };

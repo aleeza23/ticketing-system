@@ -1,7 +1,12 @@
 import React from "react";
+import ClientOpenSingle from "../open ticket/ClientOpenSingle";
 
 const ClientResolvedSingle = () => {
-  return <div>ClientResolvedSingle</div>;
+  return (
+    <>
+      <ClientOpenSingle />
+    </>
+  )
 };
 
 export default ClientResolvedSingle;

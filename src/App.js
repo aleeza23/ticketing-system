@@ -73,7 +73,8 @@ const App = () => {
 
         {/* agent dashboard routing */}
         <Route path='/agent-dashboard' element={<AgentDashboard />}>
-        <Route index element={<AllTickets />} />
+        <Route index element={<AgentIndex />} />
+        <Route path="all-ticket" element={<AllTickets />} />
         <Route path='picked-ticket' element={<PickedTicket />}/>
         <Route path='picked-ticket/single-ticket/:id' element={<SingleTicket />}/> 
         <Route path='handover-ticket' element={<HandoverTickets />}/>

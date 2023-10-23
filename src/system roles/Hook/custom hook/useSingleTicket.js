@@ -5,7 +5,9 @@ import toast from "react-hot-toast";
 
 const useSingleTicket = (id, COMMENT_ID) => {
   const {auth} = useContext(AuthContext);
-  const [comment, setcomment] = useState("I have recieved your ticket, i'm working onit. If you have any query please do comment here.");
+  const [comment, setcomment] = useState(
+    "I have recieved your ticket, i'm working onit. If you have any query please do comment here."
+  );
   const [reason, setreason] = useState("");
   const [handoverReason, sethandoverReason] = useState("");
   const [reply, setreply] = useState("");
@@ -111,6 +113,7 @@ const useSingleTicket = (id, COMMENT_ID) => {
         if (reason === "") {
           toast.error("Reason is required !");
         } else if (res.data?.ok) {
+          console.log(res , 'es');
           toast.success(res.data.message);
           setreason("");
         }
@@ -255,7 +258,7 @@ const useSingleTicket = (id, COMMENT_ID) => {
     axios
       .put(
         "http://localhost:9000/api/handover-ticket",
-        {handoverReason, ticketId: id, selectAgent},
+        {reason : handoverReason, ticketId: id, newAgentId : selectAgent},
         {
           headers: {
             Authorization: `Bearer ${auth?.token}`,
@@ -264,6 +267,7 @@ const useSingleTicket = (id, COMMENT_ID) => {
       )
       .then((res) => {
         console.log(res);
+        // console.log(selectAgent , id , handoverReason);
         sethandoverReason("");
         setselectAgent("");
         setloading(false);
@@ -281,7 +285,7 @@ const useSingleTicket = (id, COMMENT_ID) => {
     axios
       .put(
         "http://localhost:9000/api/assign-ticket",
-        {handoverReason, ticketId: id, selectAgent},
+        { reason : handoverReason, ticketId: id, selectAgent},
         {
           headers: {
             Authorization: `Bearer ${auth?.token}`,

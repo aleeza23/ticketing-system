@@ -2,6 +2,8 @@ import { Menu } from "antd";
 import React from "react";
 import { AiTwotoneHome } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi";
+import { LuFolderSync } from "react-icons/lu";
+import { MdFolderShared } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const ManagerSideNavs = ({path}) => {
@@ -39,7 +41,7 @@ const ManagerSideNavs = ({path}) => {
                 : ""
             }
             key='escalated-ticket'
-            icon={<HiUserGroup className='fs-5 me-2' />}
+            icon={<MdFolderShared className='fs-5 me-2' />}
             onClick={() => navigate("escalated-ticket")}
           >
             Escalate Tickets

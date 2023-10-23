@@ -29,7 +29,7 @@ const ClientResolvedTickets = () => {
                     src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`}
                   />
                 }
-                title={<Link>{item.title}</Link>}
+                title=<Link to={`single-ticket/${item?._id}`}>{item.title}</Link>
                 description={item.description}
               />
             </List.Item>

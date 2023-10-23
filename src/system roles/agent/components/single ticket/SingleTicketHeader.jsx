@@ -26,9 +26,13 @@ const SingleTicketHeader = ({id, from, single}) => {
 
   return (
     <>
-      <div className='d-flex justify-content-between mt-5 '>
+    <div className="row">
+      <div className="col-12 col-md-6">
+        <div className=' mt-5 '>
         <h4 className='constant__text fw-bold'>{id}</h4>
-        <div>
+        </div>
+        </div>
+        <div className="col-12 col-md-6 d-flex justify-content-end my-2  mt-md-5">
           {from === "manager" && (
             <Button
               className={"purple__btn px-4 py-2 fw-bold me-2"}
@@ -63,7 +67,10 @@ const SingleTicketHeader = ({id, from, single}) => {
             </>
           )}
         </div>
-      </div>
+      
+     
+    </div>
+      
 
       <EscalateModal
         reason={reason}

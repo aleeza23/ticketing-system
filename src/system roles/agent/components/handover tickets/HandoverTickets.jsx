@@ -10,7 +10,7 @@ const HandoverTickets = () => {
   const {handoverTickets,loading} = useAgentTickets()
   const handoverTicketThead = [
     "Title",
-    "  Picket At",
+    "Picket At",
     "Priority",
     "CreatedAt",
     "1st SLA",

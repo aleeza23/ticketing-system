@@ -18,7 +18,7 @@ const PickedTicket = () => {
     "",
   ];
   const {pickedTicketsList, loading} = useAgentTickets();
-  console.log(pickedTicketsList);
+  // console.log(pickedTicketsList);
 
   return (
     <>
